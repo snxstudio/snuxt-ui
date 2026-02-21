@@ -1,0 +1,46 @@
+@layer components {
+  .snx-toaster {
+    @apply fixed z-[100] flex flex-col gap-2 p-4;
+  }
+  .snx-toaster-top-right {
+    @apply top-0 right-0;
+  }
+  .snx-toaster-bottom-right {
+    @apply bottom-0 right-0;
+  }
+  .snx-toaster-top-left {
+    @apply top-0 left-0;
+  }
+  .snx-toaster-bottom-left {
+    @apply bottom-0 left-0;
+  }
+  .snx-toast {
+    @apply pointer-events-auto relative flex w-full items-center justify-between space-x-2
+           overflow-hidden rounded-md border p-4 pr-6 shadow-lg transition-all
+           bg-background text-foreground;
+  }
+  .snx-toast-destructive {
+    @apply border-destructive bg-destructive text-destructive-foreground;
+  }
+  .snx-toast-success {
+    @apply border-green-500/50 bg-green-500/10 text-green-600;
+  }
+  .snx-toast-title {
+    @apply text-sm font-semibold;
+  }
+  .snx-toast-description {
+    @apply text-sm opacity-90;
+  }
+  .snx-toast-close {
+    @apply absolute right-1 top-1 rounded-md p-1 text-foreground/50 opacity-0 transition-opacity
+           hover:text-foreground group-hover:opacity-100 focus:opacity-100 focus:outline-none;
+  }
+  .snx-toast:hover .snx-toast-close {
+    @apply opacity-100;
+  }
+  .snx-toast-action {
+    @apply inline-flex h-8 shrink-0 items-center justify-center rounded-md border bg-transparent
+           px-3 text-sm font-medium transition-colors hover:bg-secondary
+           focus:outline-none focus:ring-1 focus:ring-ring disabled:pointer-events-none disabled:opacity-50;
+  }
+}

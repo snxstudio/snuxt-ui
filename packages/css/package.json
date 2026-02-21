@@ -1,0 +1,13 @@
+{
+  "name": "@snx-ui/css",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    "./base": "./base.css",
+    "./components/*": "./components/*.css",
+    "./themes/*": "./themes/*.css"
+  },
+  "scripts": {
+    "clean": "echo 'nothing to clean'"
+  }
+}

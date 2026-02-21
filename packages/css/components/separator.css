@@ -1,0 +1,11 @@
+@layer components {
+  .snx-separator {
+    @apply shrink-0 bg-border;
+  }
+  .snx-separator-horizontal {
+    @apply h-px w-full;
+  }
+  .snx-separator-vertical {
+    @apply h-full w-px;
+  }
+}

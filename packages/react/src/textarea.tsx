@@ -1,0 +1,11 @@
+import { forwardRef } from 'react'
+import { cn } from '@snx-ui/core'
+
+export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
+
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
+  ({ className, ...props }, ref) => (
+    <textarea ref={ref} className={cn('snx-textarea', className)} {...props} />
+  )
+)
+Textarea.displayName = 'Textarea'

@@ -1,0 +1,254 @@
+{
+  "components": {
+    "button": {
+      "name": "button",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/button.css",
+        "react": "react/src/button.tsx",
+        "angular": "angular/src/button.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "badge": {
+      "name": "badge",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/badge.css",
+        "react": "react/src/badge.tsx",
+        "angular": "angular/src/badge.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "card": {
+      "name": "card",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/card.css",
+        "react": "react/src/card.tsx",
+        "angular": "angular/src/card.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "input": {
+      "name": "input",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/input.css",
+        "react": "react/src/input.tsx",
+        "angular": "angular/src/input.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "textarea": {
+      "name": "textarea",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/textarea.css",
+        "react": "react/src/textarea.tsx",
+        "angular": "angular/src/textarea.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "avatar": {
+      "name": "avatar",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/avatar.css",
+        "react": "react/src/avatar.tsx",
+        "angular": "angular/src/avatar.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "separator": {
+      "name": "separator",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/separator.css",
+        "react": "react/src/separator.tsx",
+        "angular": "angular/src/separator.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "skeleton": {
+      "name": "skeleton",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/skeleton.css",
+        "react": "react/src/skeleton.tsx",
+        "angular": "angular/src/skeleton.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "dialog": {
+      "name": "dialog",
+      "type": "interactive",
+      "files": {
+        "css": "css/components/dialog.css",
+        "core": "core/src/dialog.ts",
+        "react": ["react/src/dialog.tsx", "react/src/hooks/use-dialog.ts"],
+        "angular": "angular/src/dialog.component.ts"
+      },
+      "dependencies": { "internal": ["button"], "npm": {} }
+    },
+    "tabs": {
+      "name": "tabs",
+      "type": "interactive",
+      "files": {
+        "css": "css/components/tabs.css",
+        "core": "core/src/tabs.ts",
+        "react": ["react/src/tabs.tsx", "react/src/hooks/use-tabs.ts"],
+        "angular": "angular/src/tabs.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "accordion": {
+      "name": "accordion",
+      "type": "interactive",
+      "files": {
+        "css": "css/components/accordion.css",
+        "core": "core/src/accordion.ts",
+        "react": ["react/src/accordion.tsx", "react/src/hooks/use-accordion.ts"],
+        "angular": "angular/src/accordion.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "select": {
+      "name": "select",
+      "type": "interactive",
+      "files": {
+        "css": "css/components/select.css",
+        "core": "core/src/select.ts",
+        "react": ["react/src/select.tsx", "react/src/hooks/use-select.ts"],
+        "angular": "angular/src/select.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "tooltip": {
+      "name": "tooltip",
+      "type": "interactive",
+      "files": {
+        "css": "css/components/tooltip.css",
+        "core": "core/src/tooltip.ts",
+        "react": ["react/src/tooltip.tsx", "react/src/hooks/use-tooltip.ts"],
+        "angular": "angular/src/tooltip.directive.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "popover": {
+      "name": "popover",
+      "type": "interactive",
+      "files": {
+        "css": "css/components/popover.css",
+        "core": "core/src/popover.ts",
+        "react": ["react/src/popover.tsx", "react/src/hooks/use-popover.ts"],
+        "angular": "angular/src/popover.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "toast": {
+      "name": "toast",
+      "type": "interactive",
+      "files": {
+        "css": "css/components/toast.css",
+        "core": "core/src/toast.ts",
+        "react": ["react/src/toast.tsx", "react/src/hooks/use-toast.ts"],
+        "angular": "angular/src/toast.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "drawer": {
+      "name": "drawer",
+      "type": "interactive",
+      "files": {
+        "css": "css/components/drawer.css",
+        "core": "core/src/drawer.ts",
+        "react": ["react/src/drawer.tsx", "react/src/hooks/use-drawer.ts"],
+        "angular": "angular/src/drawer.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "dropdown-menu": {
+      "name": "dropdown-menu",
+      "type": "interactive",
+      "files": {
+        "css": "css/components/dropdown-menu.css",
+        "core": "core/src/dropdown-menu.ts",
+        "react": ["react/src/dropdown-menu.tsx", "react/src/hooks/use-dropdown-menu.ts"],
+        "angular": "angular/src/dropdown-menu.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "switch": {
+      "name": "switch",
+      "type": "interactive",
+      "files": {
+        "css": "css/components/switch.css",
+        "core": "core/src/switch.ts",
+        "react": "react/src/switch.tsx",
+        "angular": "angular/src/switch.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "progress": {
+      "name": "progress",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/progress.css",
+        "react": "react/src/progress.tsx",
+        "angular": "angular/src/progress.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "loader": {
+      "name": "loader",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/loader.css",
+        "react": "react/src/loader.tsx",
+        "angular": "angular/src/loader.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "chips": {
+      "name": "chips",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/chips.css",
+        "react": "react/src/chips.tsx",
+        "angular": "angular/src/chips.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "password-input": {
+      "name": "password-input",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/password-input.css",
+        "react": "react/src/password-input.tsx",
+        "angular": "angular/src/password-input.component.ts"
+      },
+      "dependencies": { "internal": ["input"], "npm": {} }
+    },
+    "counter": {
+      "name": "counter",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/counter.css",
+        "react": "react/src/counter.tsx",
+        "angular": "angular/src/counter.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "alert": {
+      "name": "alert",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/alert.css",
+        "react": "react/src/alert.tsx",
+        "angular": "angular/src/alert.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    }
+  }
+}
