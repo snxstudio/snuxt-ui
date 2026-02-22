@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Toaster } from '@snx-ui/react'
+import { Toaster } from '@snuxt-ui/react'
 import { Navbar } from './components/Navbar'
 import { Hero } from './components/Hero'
 import { FeaturesSection } from './components/FeaturesSection'

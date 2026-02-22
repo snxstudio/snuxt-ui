@@ -1,0 +1,150 @@
+---
+title: Button
+description: Displays a button or a component that looks like a button.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { ButtonDemo } from '../../../demos/ButtonDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A versatile button component with multiple variants and sizes.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <ButtonDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { Button } from '@snuxt-ui/react'
+
+    export function ButtonDemo() {
+      return (
+        <div className="flex flex-wrap gap-2">
+          <Button variant="primary">Primary</Button>
+          <Button variant="secondary">Secondary</Button>
+          <Button variant="outline">Outline</Button>
+          <Button variant="ghost">Ghost</Button>
+          <Button variant="destructive">Destructive</Button>
+          <Button variant="link">Link</Button>
+          <Button disabled>Disabled</Button>
+        </div>
+      )
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core';
+    import { SnxButtonComponent } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-button-demo',
+      standalone: true,
+      imports: [SnxButtonComponent],
+      template: `
+        <div class="flex flex-wrap gap-2">
+          <snx-button variant="primary">Primary</snx-button>
+          <snx-button variant="secondary">Secondary</snx-button>
+          <snx-button variant="outline">Outline</snx-button>
+          <snx-button variant="ghost">Ghost</snx-button>
+          <snx-button variant="destructive">Destructive</snx-button>
+          <snx-button variant="link">Link</snx-button>
+          <snx-button [disabled]="true">Disabled</snx-button>
+        </div>
+      `,
+    })
+    export class ButtonDemoComponent {}
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add button
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/button.css`
+    - `react/button.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/button.css`
+    - `angular/button.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Button } from '@snuxt-ui/react'
+```
+
+### Default
+
+```tsx
+<Button variant="primary">Click me</Button>
+```
+
+### Secondary
+
+```tsx
+<Button variant="secondary">Secondary</Button>
+```
+
+### Outline
+
+```tsx
+<Button variant="outline">Outline</Button>
+```
+
+### Ghost
+
+```tsx
+<Button variant="ghost">Ghost</Button>
+```
+
+### Destructive
+
+```tsx
+<Button variant="destructive">Delete</Button>
+```
+
+### Link
+
+```tsx
+<Button variant="link">Link</Button>
+```
+
+### Sizes
+
+```tsx
+<Button size="sm">Small</Button>
+<Button size="md">Default</Button>
+<Button size="lg">Large</Button>
+```
+
+### Disabled
+
+```tsx
+<Button disabled>Disabled</Button>
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'variant', type: '"primary" | "secondary" | "outline" | "ghost" | "destructive" | "link"', default: '"primary"', description: 'The visual style of the button.' },
+  { name: 'size', type: '"sm" | "md" | "lg" | "icon"', default: '"md"', description: 'The size of the button.' },
+  { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the button is disabled.' },
+  { name: 'className', type: 'string', description: 'Additional CSS class names.' },
+  { name: 'children', type: 'ReactNode', description: 'Button content.' },
+]} />

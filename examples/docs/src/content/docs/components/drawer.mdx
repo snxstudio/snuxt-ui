@@ -1,0 +1,244 @@
+---
+title: Drawer
+description: A panel that slides in from the edge of the screen.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { DrawerDemo } from '../../../demos/DrawerDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A slide-out panel with header, body, and footer sections. Supports left, right, top, and bottom sides. Traps focus, locks scroll, and closes on Escape.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <DrawerDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { useState } from 'react';
+    import {
+      Drawer, DrawerHeader, DrawerTitle,
+      DrawerDescription, DrawerBody, DrawerFooter,
+      Button, Input,
+    } from '@snuxt-ui/react';
+
+    export function DrawerDemo() {
+      const [open, setOpen] = useState(false);
+
+      return (
+        <div className="flex items-center justify-center">
+          <Button variant="outline" onClick={() => setOpen(true)}>
+            Open Drawer
+          </Button>
+          <Drawer open={open} onOpenChange={setOpen} side="right">
+            <DrawerHeader>
+              <DrawerTitle>Edit Profile</DrawerTitle>
+              <DrawerDescription>
+                Make changes to your profile here.
+              </DrawerDescription>
+            </DrawerHeader>
+            <DrawerBody>
+              <div className="flex flex-col gap-3">
+                <Input placeholder="Name" />
+                <Input placeholder="Email" />
+              </div>
+            </DrawerBody>
+            <DrawerFooter>
+              <Button onClick={() => setOpen(false)}>Save</Button>
+              <Button variant="outline" onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
+            </DrawerFooter>
+          </Drawer>
+        </div>
+      );
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core';
+    import {
+      SnxDrawerComponent, SnxDrawerHeaderComponent,
+      SnxDrawerTitleComponent,
+      SnxDrawerDescriptionComponent,
+      SnxDrawerBodyComponent, SnxDrawerFooterComponent,
+    } from '@snuxt-ui/angular';
+    import { SnxButtonComponent } from '@snuxt-ui/angular';
+    import { SnxInputComponent } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-drawer-demo',
+      standalone: true,
+      imports: [
+        SnxDrawerComponent, SnxDrawerHeaderComponent,
+        SnxDrawerTitleComponent,
+        SnxDrawerDescriptionComponent,
+        SnxDrawerBodyComponent, SnxDrawerFooterComponent,
+        SnxButtonComponent, SnxInputComponent,
+      ],
+      template: `
+        <snx-button variant="outline"
+          (click)="drawer.show()">
+          Open Drawer
+        </snx-button>
+        <snx-drawer #drawer side="right">
+          <snx-drawer-header>
+            <snx-drawer-title>Edit Profile</snx-drawer-title>
+            <snx-drawer-description>
+              Make changes to your profile here.
+            </snx-drawer-description>
+          </snx-drawer-header>
+          <snx-drawer-body>
+            <div class="flex flex-col gap-3">
+              <snx-input placeholder="Name" />
+              <snx-input placeholder="Email" />
+            </div>
+          </snx-drawer-body>
+          <snx-drawer-footer>
+            <snx-button (click)="drawer.close()">
+              Save
+            </snx-button>
+            <snx-button variant="outline"
+              (click)="drawer.close()">
+              Cancel
+            </snx-button>
+          </snx-drawer-footer>
+        </snx-drawer>
+      `,
+    })
+    export class DrawerDemoComponent {}
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add drawer
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/drawer.css`
+    - `core/drawer.ts`
+    - `react/drawer.tsx`
+    - `react/hooks/use-drawer.ts`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/drawer.css`
+    - `core/drawer.ts`
+    - `angular/drawer.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  Drawer, DrawerHeader, DrawerTitle,
+  DrawerDescription, DrawerBody, DrawerFooter,
+} from '@snuxt-ui/react'
+```
+
+### Right Side (Default)
+
+```tsx
+const [open, setOpen] = useState(false)
+
+<Button onClick={() => setOpen(true)}>Open Right</Button>
+<Drawer open={open} onOpenChange={setOpen} side="right">
+  <DrawerHeader>
+    <DrawerTitle>Settings</DrawerTitle>
+    <DrawerDescription>Adjust your preferences.</DrawerDescription>
+  </DrawerHeader>
+  <DrawerBody>
+    <div className="flex flex-col gap-3">
+      <Input placeholder="Name" />
+      <Input placeholder="Email" />
+    </div>
+  </DrawerBody>
+  <DrawerFooter>
+    <Button onClick={() => setOpen(false)}>Save</Button>
+  </DrawerFooter>
+</Drawer>
+```
+
+### Left Side
+
+```tsx
+const [open, setOpen] = useState(false)
+
+<Button onClick={() => setOpen(true)}>Open Left</Button>
+<Drawer open={open} onOpenChange={setOpen} side="left">
+  <DrawerHeader>
+    <DrawerTitle>Navigation</DrawerTitle>
+    <DrawerDescription>Browse sections.</DrawerDescription>
+  </DrawerHeader>
+  <DrawerBody>
+    <nav className="flex flex-col gap-2">
+      <a href="/dashboard">Dashboard</a>
+      <a href="/settings">Settings</a>
+      <a href="/profile">Profile</a>
+    </nav>
+  </DrawerBody>
+</Drawer>
+```
+
+### Top Side
+
+```tsx
+<Drawer open={open} onOpenChange={setOpen} side="top">
+  <DrawerHeader>
+    <DrawerTitle>Notification</DrawerTitle>
+    <DrawerDescription>You have new updates.</DrawerDescription>
+  </DrawerHeader>
+  <DrawerBody>
+    <p>Check your inbox for details.</p>
+  </DrawerBody>
+</Drawer>
+```
+
+### Bottom Side
+
+```tsx
+<Drawer open={open} onOpenChange={setOpen} side="bottom">
+  <DrawerHeader>
+    <DrawerTitle>Quick Actions</DrawerTitle>
+  </DrawerHeader>
+  <DrawerBody>
+    <div className="flex gap-2">
+      <Button variant="outline">Share</Button>
+      <Button variant="outline">Copy Link</Button>
+      <Button variant="destructive">Delete</Button>
+    </div>
+  </DrawerBody>
+</Drawer>
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'open', type: 'boolean', description: 'Whether the drawer is visible.' },
+  { name: 'onOpenChange', type: '(open: boolean) => void', description: 'Called when open state changes (close button, overlay click, or Escape key).' },
+  { name: 'side', type: '"left" | "right" | "top" | "bottom"', default: '"right"', description: 'Which edge of the screen the drawer slides from.' },
+  { name: 'children', type: 'ReactNode', description: 'Drawer sub-components.' },
+]} />
+
+### Sub-components
+
+| Component | Description |
+|---|---|
+| `DrawerHeader` | Container for the title and description. |
+| `DrawerTitle` | The heading of the drawer. Renders an `<h2>`. |
+| `DrawerDescription` | Supplementary text below the title. Renders a `<p>`. |
+| `DrawerBody` | Scrollable main content area of the drawer. |
+| `DrawerFooter` | Container for action buttons, typically at the bottom. |

@@ -1,0 +1,126 @@
+---
+title: Switch
+description: A toggle switch for boolean on/off states.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { SwitchDemo } from '../../../demos/SwitchDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A toggle switch component for boolean on/off states, with keyboard and ARIA support.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <SwitchDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { useState } from 'react';
+    import { Switch } from '@snuxt-ui/react';
+
+    export function SwitchDemo() {
+      const [on, setOn] = useState(false);
+
+      return (
+        <div className="flex items-center gap-3">
+          <Switch checked={on} onCheckedChange={setOn} />
+          <span className="text-sm">{on ? 'On' : 'Off'}</span>
+        </div>
+      );
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core';
+    import { SnxSwitchComponent } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-switch-demo',
+      standalone: true,
+      imports: [SnxSwitchComponent],
+      template: `
+        <div class="flex items-center gap-3">
+          <snx-switch
+            (checkedChange)="onCheckedChange($event)" />
+          <span class="text-sm">{{ on ? 'On' : 'Off' }}</span>
+        </div>
+      `,
+    })
+    export class SwitchDemoComponent {
+      on = false;
+
+      onCheckedChange(checked: boolean) {
+        this.on = checked;
+      }
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add switch
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/switch.css`
+    - `react/switch.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/switch.css`
+    - `angular/switch.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Switch } from '@snuxt-ui/react'
+```
+
+### Default
+
+```tsx
+const [on, setOn] = useState(false)
+
+<Switch checked={on} onCheckedChange={setOn} />
+```
+
+### With Label
+
+```tsx
+const [on, setOn] = useState(false)
+
+<div className="flex items-center gap-3">
+  <Switch id="airplane" checked={on} onCheckedChange={setOn} />
+  <label htmlFor="airplane" className="text-sm">Airplane Mode</label>
+</div>
+```
+
+### Disabled
+
+```tsx
+<Switch checked={false} disabled />
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'checked', type: 'boolean', default: 'false', description: 'Whether the switch is on.' },
+  { name: 'onCheckedChange', type: '(checked: boolean) => void', description: 'Called when the switch is toggled.' },
+  { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the switch is disabled.' },
+  { name: 'id', type: 'string', description: 'HTML id attribute, useful for associating with a label.' },
+  { name: 'name', type: 'string', description: 'Form field name. Renders a hidden input with value "on" or "off".' },
+  { name: 'className', type: 'string', description: 'Additional CSS class names.' },
+]} />

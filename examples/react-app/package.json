@@ -1,5 +1,5 @@
 {
-  "name": "snx-ui-react-example",
+  "name": "snuxt-ui-react-example",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,8 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@snx-ui/core": "workspace:*",
-    "@snx-ui/react": "workspace:*",
+    "@snuxt-ui/core": "workspace:*",
+    "@snuxt-ui/react": "workspace:*",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },

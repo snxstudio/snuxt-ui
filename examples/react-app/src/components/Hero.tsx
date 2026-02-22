@@ -1,4 +1,4 @@
-import { Badge, Button, Card, CardContent, Switch } from '@snx-ui/react'
+import { Badge, Button, Card, CardContent, Switch } from '@snuxt-ui/react'
 import { useState } from 'react'
 
 export function Hero() {
@@ -6,7 +6,7 @@ export function Hero() {
   const [copied, setCopied] = useState(false)
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText('npx snx-ui add button')
+    await navigator.clipboard.writeText('npx snuxt-ui add button')
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
@@ -47,7 +47,7 @@ export function Hero() {
             className="font-mono"
             onClick={handleCopy}
           >
-            {copied ? 'Copied!' : 'npx snx-ui add button'}
+            {copied ? 'Copied!' : 'npx snuxt-ui add button'}
             {!copied && (
               <svg
                 xmlns="http://www.w3.org/2000/svg"

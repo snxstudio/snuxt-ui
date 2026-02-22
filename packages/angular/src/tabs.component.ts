@@ -1,5 +1,5 @@
 import { Component, input, output, signal, computed, contentChildren, ElementRef } from '@angular/core'
-import { createTabs, type TabItem } from '@snx-ui/core'
+import { createTabs, type TabItem } from '@snuxt-ui/core'
 
 @Component({
   selector: 'snx-tabs',

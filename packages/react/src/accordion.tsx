@@ -1,6 +1,6 @@
-import { cn } from '@snx-ui/core'
+import { cn } from '@snuxt-ui/core'
 import { useAccordion } from './hooks/use-accordion'
-import type { AccordionItemConfig, AccordionConfig } from '@snx-ui/core'
+import type { AccordionItemConfig, AccordionConfig } from '@snuxt-ui/core'
 
 export interface AccordionProps {
   items: AccordionItemConfig[]

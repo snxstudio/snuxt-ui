@@ -1,10 +1,10 @@
 {
-  "name": "snx-ui",
+  "name": "snuxt-ui",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "bin": {
-    "snx-ui": "./dist/index.js"
+    "snuxt-ui": "./dist/index.js"
   },
   "scripts": {
     "build": "tsup",

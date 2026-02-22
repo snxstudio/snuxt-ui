@@ -1,6 +1,6 @@
 {
   "meta": {
-    "baseUrl": "https://raw.githubusercontent.com/thepsygeek/snx-ui/main/packages",
+    "baseUrl": "https://raw.githubusercontent.com/thepsygeek/snuxt-ui/main/packages",
     "sharedCoreDeps": ["core/src/utils/cn.ts"]
   },
   "components": {

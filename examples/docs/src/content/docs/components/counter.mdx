@@ -1,0 +1,133 @@
+---
+title: Counter
+description: A numeric stepper with increment and decrement buttons.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { CounterDemo } from '../../../demos/CounterDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A numeric counter with increment and decrement buttons, supporting min/max bounds and a configurable step value.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <CounterDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { useState } from 'react';
+    import { Counter } from '@snuxt-ui/react';
+
+    export function CounterDemo() {
+      const [count, setCount] = useState(3);
+
+      return (
+        <div className="flex items-center gap-3">
+          <Counter value={count} onChange={setCount} min={0} max={10} />
+          <span className="text-sm text-muted-foreground">
+            Value: {count}
+          </span>
+        </div>
+      );
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core';
+    import { SnxCounterComponent } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-counter-demo',
+      standalone: true,
+      imports: [SnxCounterComponent],
+      template: `
+        <div class="flex items-center gap-3">
+          <snx-counter
+            [min]="0"
+            [max]="10"
+            (valueChange)="onValueChange($event)" />
+        </div>
+      `,
+    })
+    export class CounterDemoComponent {
+      onValueChange(value: number) {
+        console.log('Counter value:', value);
+      }
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add counter
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/counter.css`
+    - `react/counter.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/counter.css`
+    - `angular/counter.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Counter } from '@snuxt-ui/react'
+```
+
+### Default
+
+```tsx
+const [count, setCount] = useState(0)
+
+<Counter value={count} onChange={setCount} />
+```
+
+### With Min/Max Bounds
+
+```tsx
+const [count, setCount] = useState(3)
+
+<Counter value={count} onChange={setCount} min={0} max={10} />
+```
+
+### Custom Step
+
+```tsx
+const [count, setCount] = useState(0)
+
+<Counter value={count} onChange={setCount} step={5} min={0} max={100} />
+```
+
+### Disabled
+
+```tsx
+<Counter value={5} onChange={() => {}} disabled />
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'value', type: 'number', description: 'Current counter value.' },
+  { name: 'onChange', type: '(value: number) => void', description: 'Called when the value changes.' },
+  { name: 'min', type: 'number', default: '0', description: 'Minimum allowed value.' },
+  { name: 'max', type: 'number', default: '99', description: 'Maximum allowed value.' },
+  { name: 'step', type: 'number', default: '1', description: 'Amount to increment or decrement per click.' },
+  { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the counter is disabled.' },
+  { name: 'className', type: 'string', description: 'Additional CSS class names.' },
+]} />

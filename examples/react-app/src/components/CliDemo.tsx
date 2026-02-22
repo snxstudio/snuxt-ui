@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Card, CardContent } from '@snx-ui/react'
+import { Card, CardContent } from '@snuxt-ui/react'
 import { SectionHeader } from './SectionHeader'
 import { useInView } from '../hooks/useInView'
 
@@ -10,9 +10,9 @@ interface TerminalLine {
 }
 
 const initialLines: TerminalLine[] = [
-  { command: 'npx snx-ui init', response: ' \u2713 Detected: React + Tailwind v4', visible: false },
-  { command: 'npx snx-ui add button dialog tabs', response: ' \u2713 3 components added to ./src/components', visible: false },
-  { command: 'npx snx-ui theme glass', response: ' \u2713 Glass theme applied', visible: false },
+  { command: 'npx snuxt-ui init', response: ' \u2713 Detected: React + Tailwind v4', visible: false },
+  { command: 'npx snuxt-ui add button dialog tabs', response: ' \u2713 3 components added to ./src/components', visible: false },
+  { command: 'npx snuxt-ui theme glass', response: ' \u2713 Glass theme applied', visible: false },
 ]
 
 const features = [

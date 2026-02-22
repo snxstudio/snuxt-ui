@@ -1,5 +1,5 @@
 {
-  "name": "snx-ui",
+  "name": "snuxt-ui",
   "private": true,
   "version": "0.1.0",
   "description": "Framework-agnostic UI library with shadcn-style CLI",

@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
-import { cn, createClickOutsideHandler } from '@snx-ui/core'
+import { cn, createClickOutsideHandler } from '@snuxt-ui/core'
 import { useSelect } from './hooks/use-select'
-import type { SelectOption } from '@snx-ui/core'
+import type { SelectOption } from '@snuxt-ui/core'
 
 export interface SelectProps {
   options: SelectOption[]

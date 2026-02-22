@@ -1,0 +1,153 @@
+---
+title: Chat Bubble
+description: Message bubbles for AI chat interfaces with avatar and typing indicator.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { ChatBubbleDemo } from '../../../demos/ChatBubbleDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+Chat message bubbles with user/AI variants. User messages align right with primary background, AI messages align left with secondary background. Includes avatar, timestamp, and animated typing indicator.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <ChatBubbleDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import {
+      ChatBubble, ChatBubbleAvatar, ChatBubbleContent,
+      ChatBubbleTimestamp, ChatBubbleTyping,
+    } from '@snuxt-ui/react'
+
+    export function ChatBubbleDemo() {
+      return (
+        <div className="flex flex-col gap-4">
+          <ChatBubble variant="user">
+            <ChatBubbleAvatar src="/user.png" alt="User" />
+            <div>
+              <ChatBubbleContent>Hello! How are you?</ChatBubbleContent>
+              <ChatBubbleTimestamp>2:30 PM</ChatBubbleTimestamp>
+            </div>
+          </ChatBubble>
+          <ChatBubble variant="ai">
+            <ChatBubbleAvatar src="/bot.png" alt="AI" />
+            <div>
+              <ChatBubbleContent>I'm doing great, thanks!</ChatBubbleContent>
+              <ChatBubbleTimestamp>2:30 PM</ChatBubbleTimestamp>
+            </div>
+          </ChatBubble>
+          <ChatBubble variant="ai">
+            <ChatBubbleAvatar src="/bot.png" alt="AI" />
+            <ChatBubbleTyping />
+          </ChatBubble>
+        </div>
+      )
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core'
+    import {
+      SnxChatBubbleComponent, SnxChatBubbleAvatarComponent,
+      SnxChatBubbleContentComponent, SnxChatBubbleTimestampComponent,
+      SnxChatBubbleTypingComponent,
+    } from '@snuxt-ui/angular'
+
+    @Component({
+      selector: 'app-chat-demo',
+      standalone: true,
+      imports: [
+        SnxChatBubbleComponent, SnxChatBubbleAvatarComponent,
+        SnxChatBubbleContentComponent, SnxChatBubbleTimestampComponent,
+        SnxChatBubbleTypingComponent,
+      ],
+      template: `
+        <snx-chat-bubble variant="user">
+          <snx-chat-bubble-avatar src="/user.png" alt="User" />
+          <div>
+            <snx-chat-bubble-content>Hello!</snx-chat-bubble-content>
+            <snx-chat-bubble-timestamp>2:30 PM</snx-chat-bubble-timestamp>
+          </div>
+        </snx-chat-bubble>
+        <snx-chat-bubble variant="ai">
+          <snx-chat-bubble-avatar src="/bot.png" alt="AI" />
+          <snx-chat-bubble-typing />
+        </snx-chat-bubble>
+      `,
+    })
+    export class ChatDemoComponent {}
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add chat-bubble
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/chat-bubble.css`
+    - `react/chat-bubble.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/chat-bubble.css`
+    - `angular/chat-bubble.component.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  ChatBubble, ChatBubbleAvatar, ChatBubbleContent,
+  ChatBubbleTimestamp, ChatBubbleTyping,
+} from '@snuxt-ui/react'
+```
+
+### User Message
+
+```tsx
+<ChatBubble variant="user">
+  <ChatBubbleAvatar src="/avatar.png" alt="User" />
+  <div>
+    <ChatBubbleContent>Hello!</ChatBubbleContent>
+    <ChatBubbleTimestamp>2:30 PM</ChatBubbleTimestamp>
+  </div>
+</ChatBubble>
+```
+
+### AI Message with Typing
+
+```tsx
+<ChatBubble variant="ai">
+  <ChatBubbleAvatar src="/bot.png" alt="AI" />
+  <ChatBubbleTyping />
+</ChatBubble>
+```
+
+## API Reference
+
+### ChatBubble
+
+<PropsTable props={[
+  { name: 'variant', type: '"user" | "ai"', default: '"ai"', description: 'Message direction and styling.' },
+]} />
+
+### ChatBubbleAvatar
+
+<PropsTable props={[
+  { name: 'src', type: 'string', description: 'Avatar image URL.' },
+  { name: 'alt', type: 'string', description: 'Alt text for the avatar.' },
+]} />

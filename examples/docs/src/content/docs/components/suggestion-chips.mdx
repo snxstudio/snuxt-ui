@@ -1,0 +1,113 @@
+---
+title: Suggestion Chips
+description: Horizontally scrollable follow-up prompt pills for AI conversations.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { SuggestionChipsDemo } from '../../../demos/SuggestionChipsDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+Horizontally scrollable suggestion pills that provide follow-up prompts in AI chat interfaces. Hidden scrollbar for a clean look with press-scale feedback.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <SuggestionChipsDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { SuggestionChips, SuggestionChip } from '@snuxt-ui/react'
+
+    export function SuggestionChipsDemo() {
+      return (
+        <SuggestionChips>
+          <SuggestionChip>Tell me more</SuggestionChip>
+          <SuggestionChip>Give an example</SuggestionChip>
+          <SuggestionChip variant="primary">React patterns</SuggestionChip>
+          <SuggestionChip variant="outline">Show code</SuggestionChip>
+        </SuggestionChips>
+      )
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core'
+    import { SnxSuggestionChipsComponent, SnxSuggestionChipComponent } from '@snuxt-ui/angular'
+
+    @Component({
+      selector: 'app-suggestion-demo',
+      standalone: true,
+      imports: [SnxSuggestionChipsComponent, SnxSuggestionChipComponent],
+      template: `
+        <snx-suggestion-chips>
+          <snx-suggestion-chip>Tell me more</snx-suggestion-chip>
+          <snx-suggestion-chip variant="primary">React patterns</snx-suggestion-chip>
+          <snx-suggestion-chip variant="outline">Show code</snx-suggestion-chip>
+        </snx-suggestion-chips>
+      `,
+    })
+    export class SuggestionDemoComponent {}
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add suggestion-chips
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/suggestion-chips.css`
+    - `react/suggestion-chips.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/suggestion-chips.css`
+    - `angular/suggestion-chips.component.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { SuggestionChips, SuggestionChip } from '@snuxt-ui/react'
+```
+
+### Variants
+
+```tsx
+<SuggestionChips>
+  <SuggestionChip variant="default">Default</SuggestionChip>
+  <SuggestionChip variant="primary">Primary</SuggestionChip>
+  <SuggestionChip variant="outline">Outline</SuggestionChip>
+</SuggestionChips>
+```
+
+### With Click Handler
+
+```tsx
+<SuggestionChips>
+  <SuggestionChip onClick={() => send('Tell me more')}>
+    Tell me more
+  </SuggestionChip>
+</SuggestionChips>
+```
+
+## API Reference
+
+### SuggestionChip
+
+<PropsTable props={[
+  { name: 'variant', type: '"default" | "primary" | "outline"', default: '"default"', description: 'Visual style variant.' },
+  { name: 'onClick', type: '() => void', description: 'Click handler for the chip.' },
+  { name: 'children', type: 'ReactNode', description: 'Chip label.' },
+]} />

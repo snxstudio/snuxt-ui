@@ -1,0 +1,165 @@
+---
+title: Progress
+description: A horizontal progress bar.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { ProgressDemo } from '../../../demos/ProgressDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A progress bar that displays completion percentage with smooth transitions. Includes proper ARIA attributes for accessibility.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <ProgressDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { useState, useEffect } from 'react';
+    import { Progress, Button } from '@snuxt-ui/react';
+
+    export function ProgressDemo() {
+      const [progress, setProgress] = useState(30);
+
+      useEffect(() => {
+        if (progress < 0) setProgress(0);
+        if (progress > 100) setProgress(100);
+      }, [progress]);
+
+      return (
+        <div className="flex flex-col gap-3 w-full">
+          <Progress value={progress} />
+          <div className="flex items-center gap-2">
+            <Button size="sm" variant="outline" onClick={() => setProgress((p) => Math.max(0, p - 10))}>
+              -10
+            </Button>
+            <span className="text-sm tabular-nums">{progress}%</span>
+            <Button size="sm" variant="outline" onClick={() => setProgress((p) => Math.min(100, p + 10))}>
+              +10
+            </Button>
+          </div>
+        </div>
+      );
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component, signal } from '@angular/core';
+    import { SnxProgressComponent } from '@snuxt-ui/angular';
+    import { SnxButtonComponent } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-progress-demo',
+      standalone: true,
+      imports: [SnxProgressComponent, SnxButtonComponent],
+      template: `
+        <div class="flex flex-col gap-3 w-full">
+          <snx-progress [value]="progress()" />
+          <div class="flex items-center gap-2">
+            <snx-button size="sm" variant="outline"
+              (click)="decrease()">-10</snx-button>
+            <span class="text-sm tabular-nums">
+              {{ progress() }}%
+            </span>
+            <snx-button size="sm" variant="outline"
+              (click)="increase()">+10</snx-button>
+          </div>
+        </div>
+      `,
+    })
+    export class ProgressDemoComponent {
+      progress = signal(30);
+
+      decrease() {
+        this.progress.update(v => Math.max(0, v - 10));
+      }
+
+      increase() {
+        this.progress.update(v => Math.min(100, v + 10));
+      }
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add progress
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/progress.css`
+    - `react/progress.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/progress.css`
+    - `angular/progress.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Progress } from '@snuxt-ui/react'
+```
+
+### Default
+
+```tsx
+<Progress value={60} />
+```
+
+### Empty
+
+```tsx
+<Progress value={0} />
+```
+
+### Half
+
+```tsx
+<Progress value={50} />
+```
+
+### Complete
+
+```tsx
+<Progress value={100} />
+```
+
+### Custom Max
+
+```tsx
+<Progress value={3} max={5} />
+```
+
+### With Label
+
+```tsx
+<div className="flex flex-col gap-1">
+  <div className="flex justify-between text-sm">
+    <span>Uploading...</span>
+    <span>75%</span>
+  </div>
+  <Progress value={75} />
+</div>
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'value', type: 'number', default: '0', description: 'Current progress value.' },
+  { name: 'max', type: 'number', default: '100', description: 'Maximum progress value.' },
+  { name: 'className', type: 'string', description: 'Additional CSS class names.' },
+]} />

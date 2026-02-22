@@ -1,0 +1,291 @@
+---
+title: Accordion
+description: Collapsible content sections.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { AccordionDemo } from '../../../demos/AccordionDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A vertically stacked set of collapsible content sections. Supports single or multiple expanded items.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <AccordionDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import {
+      Accordion, AccordionItem, AccordionTrigger, AccordionContent,
+    } from '@snuxt-ui/react'
+
+    const items = [
+      { value: 'item-1' },
+      { value: 'item-2' },
+      { value: 'item-3' },
+    ]
+
+    export function AccordionDemo() {
+      return (
+        <Accordion items={items} type="single" collapsible className="w-full max-w-sm">
+          {(api) => (
+            <>
+              <AccordionItem>
+                <AccordionTrigger
+                  isExpanded={api.expandedValues.includes('item-1')}
+                  onClick={() =>
+                    api.getTriggerProps('item-1', api.expandedValues).onClick()
+                  }
+                >
+                  Is it accessible?
+                </AccordionTrigger>
+                {api.expandedValues.includes('item-1') && (
+                  <AccordionContent>
+                    <p className="text-sm text-muted-foreground pb-3">
+                      Yes. It adheres to WAI-ARIA design patterns.
+                    </p>
+                  </AccordionContent>
+                )}
+              </AccordionItem>
+
+              <AccordionItem>
+                <AccordionTrigger
+                  isExpanded={api.expandedValues.includes('item-2')}
+                  onClick={() =>
+                    api.getTriggerProps('item-2', api.expandedValues).onClick()
+                  }
+                >
+                  Is it styled?
+                </AccordionTrigger>
+                {api.expandedValues.includes('item-2') && (
+                  <AccordionContent>
+                    <p className="text-sm text-muted-foreground pb-3">
+                      Yes. Ships with default styles via Tailwind CSS.
+                    </p>
+                  </AccordionContent>
+                )}
+              </AccordionItem>
+
+              <AccordionItem>
+                <AccordionTrigger
+                  isExpanded={api.expandedValues.includes('item-3')}
+                  onClick={() =>
+                    api.getTriggerProps('item-3', api.expandedValues).onClick()
+                  }
+                >
+                  Is it animated?
+                </AccordionTrigger>
+                {api.expandedValues.includes('item-3') && (
+                  <AccordionContent>
+                    <p className="text-sm text-muted-foreground pb-3">
+                      Yes. Transitions are handled with CSS for smooth animations.
+                    </p>
+                  </AccordionContent>
+                )}
+              </AccordionItem>
+            </>
+          )}
+        </Accordion>
+      )
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core';
+    import {
+      SnxAccordionComponent, SnxAccordionItemComponent,
+      SnxAccordionTriggerComponent,
+      SnxAccordionContentComponent,
+    } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-accordion-demo',
+      standalone: true,
+      imports: [
+        SnxAccordionComponent, SnxAccordionItemComponent,
+        SnxAccordionTriggerComponent,
+        SnxAccordionContentComponent,
+      ],
+      template: `
+        <snx-accordion #accordion
+          [items]="items" type="single" [collapsible]="true"
+          class="w-full max-w-sm">
+          <snx-accordion-item>
+            <snx-accordion-trigger
+              [isExpanded]="accordion.isExpanded('item-1')"
+              (onClick)="accordion.toggle('item-1')">
+              Is it accessible?
+            </snx-accordion-trigger>
+            @if (accordion.isExpanded('item-1')) {
+              <snx-accordion-content [isExpanded]="true">
+                <p class="text-sm text-muted-foreground pb-3">
+                  Yes. It adheres to WAI-ARIA design patterns.
+                </p>
+              </snx-accordion-content>
+            }
+          </snx-accordion-item>
+          <snx-accordion-item>
+            <snx-accordion-trigger
+              [isExpanded]="accordion.isExpanded('item-2')"
+              (onClick)="accordion.toggle('item-2')">
+              Is it styled?
+            </snx-accordion-trigger>
+            @if (accordion.isExpanded('item-2')) {
+              <snx-accordion-content [isExpanded]="true">
+                <p class="text-sm text-muted-foreground pb-3">
+                  Yes. Ships with default styles via Tailwind CSS.
+                </p>
+              </snx-accordion-content>
+            }
+          </snx-accordion-item>
+          <snx-accordion-item>
+            <snx-accordion-trigger
+              [isExpanded]="accordion.isExpanded('item-3')"
+              (onClick)="accordion.toggle('item-3')">
+              Is it animated?
+            </snx-accordion-trigger>
+            @if (accordion.isExpanded('item-3')) {
+              <snx-accordion-content [isExpanded]="true">
+                <p class="text-sm text-muted-foreground pb-3">
+                  Yes. Transitions are handled with CSS.
+                </p>
+              </snx-accordion-content>
+            }
+          </snx-accordion-item>
+        </snx-accordion>
+      `,
+    })
+    export class AccordionDemoComponent {
+      items = [
+        { value: 'item-1' },
+        { value: 'item-2' },
+        { value: 'item-3' },
+      ];
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add accordion
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/accordion.css`
+    - `core/accordion.ts`
+    - `react/accordion.tsx`
+    - `react/hooks/use-accordion.ts`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/accordion.css`
+    - `core/accordion.ts`
+    - `angular/accordion.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  Accordion, AccordionItem,
+  AccordionTrigger, AccordionContent,
+} from '@snuxt-ui/react'
+```
+
+### Single (Collapsible)
+
+```tsx
+const items = [{ value: 'item-1' }, { value: 'item-2' }]
+
+<Accordion items={items} type="single" collapsible>
+  {(api) => (
+    <>
+      <AccordionItem>
+        <AccordionTrigger
+          isExpanded={api.expandedValues.includes('item-1')}
+          onClick={() =>
+            api.getTriggerProps('item-1', api.expandedValues).onClick()
+          }
+        >
+          Section 1
+        </AccordionTrigger>
+        {api.expandedValues.includes('item-1') && (
+          <AccordionContent>Content for section 1.</AccordionContent>
+        )}
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionTrigger
+          isExpanded={api.expandedValues.includes('item-2')}
+          onClick={() =>
+            api.getTriggerProps('item-2', api.expandedValues).onClick()
+          }
+        >
+          Section 2
+        </AccordionTrigger>
+        {api.expandedValues.includes('item-2') && (
+          <AccordionContent>Content for section 2.</AccordionContent>
+        )}
+      </AccordionItem>
+    </>
+  )}
+</Accordion>
+```
+
+### Multiple
+
+```tsx
+<Accordion items={items} type="multiple">
+  {(api) => (
+    <>
+      <AccordionItem>
+        <AccordionTrigger
+          isExpanded={api.expandedValues.includes('item-1')}
+          onClick={() =>
+            api.getTriggerProps('item-1', api.expandedValues).onClick()
+          }
+        >
+          Section 1
+        </AccordionTrigger>
+        {api.expandedValues.includes('item-1') && (
+          <AccordionContent>Content for section 1.</AccordionContent>
+        )}
+      </AccordionItem>
+      <AccordionItem>
+        <AccordionTrigger
+          isExpanded={api.expandedValues.includes('item-2')}
+          onClick={() =>
+            api.getTriggerProps('item-2', api.expandedValues).onClick()
+          }
+        >
+          Section 2
+        </AccordionTrigger>
+        {api.expandedValues.includes('item-2') && (
+          <AccordionContent>Content for section 2.</AccordionContent>
+        )}
+      </AccordionItem>
+    </>
+  )}
+</Accordion>
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'items', type: '{ value: string }[]', description: 'Accordion items configuration.' },
+  { name: 'type', type: '"single" | "multiple"', default: '"single"', description: 'Whether one or many items can be expanded.' },
+  { name: 'collapsible', type: 'boolean', default: 'false', description: 'Allow all items to be collapsed (single mode).' },
+  { name: 'children', type: '(api: AccordionApi) => ReactNode', description: 'Render function receiving the accordion API.' },
+  { name: 'className', type: 'string', description: 'Additional CSS classes.' },
+]} />

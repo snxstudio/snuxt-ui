@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { cn } from '@snx-ui/core'
+import { cn } from '@snuxt-ui/core'
 
 export interface SwitchProps {
   checked?: boolean

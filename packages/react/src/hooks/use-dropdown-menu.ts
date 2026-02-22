@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback } from 'react'
-import { createDropdownMenu, type DropdownMenuItem, type DropdownMenuConfig } from '@snx-ui/core'
+import { createDropdownMenu, type DropdownMenuItem, type DropdownMenuConfig } from '@snuxt-ui/core'
 
 export function useDropdownMenu(items: DropdownMenuItem[], config: Omit<DropdownMenuConfig, 'onOpenChange'> = {}) {
   const [isOpen, setIsOpen] = useState(false)

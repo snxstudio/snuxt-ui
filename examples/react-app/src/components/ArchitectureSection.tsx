@@ -1,4 +1,4 @@
-import { Card, CardContent } from '@snx-ui/react'
+import { Card, CardContent } from '@snuxt-ui/react'
 import { SectionHeader } from './SectionHeader'
 import { useInView } from '../hooks/useInView'
 
@@ -13,7 +13,7 @@ interface LayerInfo {
 const layers: LayerInfo[] = [
   {
     number: 0,
-    name: '@snx-ui/css',
+    name: '@snuxt-ui/css',
     description: 'Tokens, styles, themes',
     color: 'oklch(0.65 0.2 280)',
     icon: (
@@ -26,7 +26,7 @@ const layers: LayerInfo[] = [
   },
   {
     number: 1,
-    name: '@snx-ui/core',
+    name: '@snuxt-ui/core',
     description: 'TS functions, state, ARIA',
     color: 'oklch(0.65 0.2 200)',
     icon: (
@@ -38,7 +38,7 @@ const layers: LayerInfo[] = [
   },
   {
     number: 2,
-    name: '@snx-ui/react',
+    name: '@snuxt-ui/react',
     description: 'Hooks, components',
     color: 'oklch(0.65 0.2 150)',
     icon: (
@@ -49,7 +49,7 @@ const layers: LayerInfo[] = [
   },
   {
     number: 3,
-    name: 'snx-ui',
+    name: 'snuxt-ui',
     description: 'Copies code into your project',
     color: 'oklch(0.65 0.2 340)',
     icon: (

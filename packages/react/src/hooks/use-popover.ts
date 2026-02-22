@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { createPopover, type PopoverConfig } from '@snx-ui/core'
+import { createPopover, type PopoverConfig } from '@snuxt-ui/core'
 
 export function usePopover(config: Omit<PopoverConfig, 'onOpenChange'> = {}) {
   const [open, setOpen] = useState(false)

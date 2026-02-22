@@ -1,4 +1,4 @@
-import { cn } from '@snx-ui/core'
+import { cn } from '@snuxt-ui/core'
 import { useToast } from './hooks/use-toast'
 
 export interface ToasterProps {

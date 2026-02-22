@@ -1,5 +1,5 @@
 import { useState, useMemo, useCallback } from 'react'
-import { createSelect, type SelectOption, type SelectConfig } from '@snx-ui/core'
+import { createSelect, type SelectOption, type SelectConfig } from '@snuxt-ui/core'
 
 export function useSelect(options: SelectOption[], config: Omit<SelectConfig, 'onValueChange' | 'onOpenChange'> = {}) {
   const [isOpen, setIsOpen] = useState(false)

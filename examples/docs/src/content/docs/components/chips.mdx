@@ -1,0 +1,178 @@
+---
+title: Chips
+description: Removable tag-style labels.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { ChipsDemo } from '../../../demos/ChipsDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A set of removable chip/tag components for displaying selections or categories. Chips can be dismissed individually and support multiple visual variants.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <ChipsDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { useState } from 'react';
+    import { Chips, Chip } from '@snuxt-ui/react';
+
+    const initial = [
+      { id: 1, label: 'React', variant: 'default' as const },
+      { id: 2, label: 'TypeScript', variant: 'primary' as const },
+      { id: 3, label: 'Tailwind', variant: 'outline' as const },
+      { id: 4, label: 'Remove me', variant: 'destructive' as const },
+    ];
+
+    export function ChipsDemo() {
+      const [chips, setChips] = useState(initial);
+
+      return (
+        <div className="flex flex-col gap-2">
+          <Chips>
+            {chips.map((chip) => (
+              <Chip
+                key={chip.id}
+                variant={chip.variant}
+                onRemove={() => setChips((c) => c.filter((x) => x.id !== chip.id))}
+              >
+                {chip.label}
+              </Chip>
+            ))}
+          </Chips>
+          {chips.length < initial.length && (
+            <button
+              className="text-xs text-muted-foreground underline self-start"
+              onClick={() => setChips(initial)}
+            >
+              Reset
+            </button>
+          )}
+        </div>
+      );
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component, signal } from '@angular/core';
+    import {
+      SnxChipsComponent, SnxChipComponent,
+    } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-chips-demo',
+      standalone: true,
+      imports: [SnxChipsComponent, SnxChipComponent],
+      template: `
+        <snx-chips>
+          @for (chip of chips(); track chip.id) {
+            <snx-chip
+              [variant]="chip.variant"
+              [removable]="true"
+              (remove)="remove(chip.id)">
+              {{ chip.label }}
+            </snx-chip>
+          }
+        </snx-chips>
+      `,
+    })
+    export class ChipsDemoComponent {
+      chips = signal([
+        { id: 1, label: 'React', variant: 'default' as const },
+        { id: 2, label: 'TypeScript', variant: 'primary' as const },
+        { id: 3, label: 'Tailwind', variant: 'outline' as const },
+        { id: 4, label: 'Remove me', variant: 'destructive' as const },
+      ]);
+
+      remove(id: number) {
+        this.chips.update(c => c.filter(x => x.id !== id));
+      }
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add chips
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/chips.css`
+    - `react/chips.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/chips.css`
+    - `angular/chips.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Chips, Chip } from '@snuxt-ui/react'
+```
+
+### Removable Chips
+
+```tsx
+<Chips>
+  <Chip variant="default" onRemove={() => {}}>React</Chip>
+  <Chip variant="primary" onRemove={() => {}}>TypeScript</Chip>
+  <Chip variant="outline" onRemove={() => {}}>Tailwind</Chip>
+</Chips>
+```
+
+### Variants
+
+```tsx
+<Chips>
+  <Chip variant="default">Default</Chip>
+  <Chip variant="primary">Primary</Chip>
+  <Chip variant="outline">Outline</Chip>
+  <Chip variant="destructive">Destructive</Chip>
+</Chips>
+```
+
+### Dynamic List
+
+```tsx
+const [chips, setChips] = useState([
+  { id: 1, label: 'React' },
+  { id: 2, label: 'Vue' },
+  { id: 3, label: 'Svelte' },
+])
+
+<Chips>
+  {chips.map((chip) => (
+    <Chip
+      key={chip.id}
+      onRemove={() => setChips((c) => c.filter((x) => x.id !== chip.id))}
+    >
+      {chip.label}
+    </Chip>
+  ))}
+</Chips>
+```
+
+## API Reference
+
+### Chip
+
+<PropsTable props={[
+  { name: 'variant', type: '"default" | "primary" | "outline" | "destructive"', default: '"default"', description: 'Visual style variant.' },
+  { name: 'onRemove', type: '() => void', description: 'Called when the remove button is clicked.' },
+  { name: 'children', type: 'ReactNode', description: 'Chip label content.' },
+]} />

@@ -1,0 +1,89 @@
+---
+title: Theming
+description: Customize colors, switch themes, and use design tokens.
+---
+
+## Built-in Themes
+
+snuxt ships with three themes:
+
+| Theme | Activation | Description |
+|-------|-----------|-------------|
+| **Default** | No attribute needed | Light theme with OKLCH colors |
+| **Dark** | `data-theme="dark"` | Dark color scheme |
+| **Glass** | `data-theme="glass"` | Glassmorphism with backdrop blur |
+
+## Switching Themes at Runtime
+
+```js
+// Switch to dark
+document.documentElement.setAttribute('data-theme', 'dark')
+
+// Switch to glass
+document.documentElement.setAttribute('data-theme', 'glass')
+
+// Back to default
+document.documentElement.removeAttribute('data-theme')
+```
+
+## Design Tokens
+
+All colors use the OKLCH color space for perceptually uniform palettes. Tokens are defined as CSS custom properties in `base.css`:
+
+```css
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0.03 285);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0.005 285);
+  --accent: oklch(0.97 0.005 285);
+  --muted: oklch(0.97 0.005 285);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0.005 285);
+  --ring: oklch(0.87 0.005 285);
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.625rem;
+  --radius-xl: 0.75rem;
+}
+```
+
+## Customizing Tokens
+
+Override any token in your own CSS to create a custom theme:
+
+```css
+:root {
+  --primary: oklch(0.6 0.25 260);       /* Custom blue */
+  --primary-foreground: oklch(1 0 0);
+  --radius-md: 0.75rem;                 /* Rounder corners */
+}
+```
+
+## Glass Theme
+
+The glass theme applies semi-transparent backgrounds and `backdrop-filter: blur()` to create frosted-glass effects:
+
+```css
+[data-theme='glass'] {
+  --background: oklch(1 0 0 / 0.7);
+  --card: oklch(1 0 0 / 0.5);
+}
+
+[data-theme='glass'] .snx-card {
+  backdrop-filter: blur(12px);
+}
+```
+
+The glass theme includes accessibility fallbacks for browsers that don't support `backdrop-filter` and respects `prefers-reduced-motion`.
+
+## Dark Mode with Tailwind v4
+
+snuxt defines a custom variant in `base.css`:
+
+```css
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+```
+
+This means any Tailwind `dark:` utilities you use will automatically activate when `data-theme="dark"` is set on the root element.

@@ -44,3 +44,40 @@ export { SnxChipComponent, SnxChipsComponent } from './chips.component'
 export { SnxPasswordInputComponent } from './password-input.component'
 export { SnxCounterComponent } from './counter.component'
 export { SnxAlertComponent, SnxAlertTitleComponent, SnxAlertDescriptionComponent } from './alert.component'
+
+// AI components
+export {
+  SnxPromptInputComponent,
+  SnxPromptInputTextareaComponent,
+  SnxPromptInputFooterComponent,
+  SnxPromptInputActionsComponent,
+  SnxPromptInputCharCountComponent,
+  SnxPromptInputAttachmentsComponent,
+  SnxPromptInputAttachmentComponent,
+} from './prompt-input.component'
+export {
+  SnxChatBubbleComponent,
+  SnxChatBubbleAvatarComponent,
+  SnxChatBubbleContentComponent,
+  SnxChatBubbleTimestampComponent,
+  SnxChatBubbleTypingComponent,
+} from './chat-bubble.component'
+export { SnxAiBadgeComponent } from './ai-badge.component'
+export { SnxSuggestionChipsComponent, SnxSuggestionChipComponent } from './suggestion-chips.component'
+export { SnxSourceCardsComponent, SnxSourceCardComponent } from './source-card.component'
+export {
+  SnxStreamingTextComponent,
+  SnxStreamingTextFadeInComponent,
+  SnxStreamingTextWordComponent,
+  SnxStreamingTextLineComponent,
+  SnxStreamingTextSkeletonComponent,
+  SnxStreamingTextSkeletonLineComponent,
+} from './streaming-text.component'
+export {
+  SnxFeedbackComponent,
+  SnxFeedbackButtonComponent,
+  SnxFeedbackSeparatorComponent,
+  SnxFeedbackFormComponent,
+  SnxFeedbackInputComponent,
+  SnxFeedbackSubmitComponent,
+} from './feedback.component'

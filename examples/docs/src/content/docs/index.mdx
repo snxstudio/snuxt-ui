@@ -1,0 +1,64 @@
+---
+title: Beautiful by default. Customizable by design.
+description: Framework-agnostic UI components with a shadcn-style CLI.
+template: splash
+hero:
+  tagline: Beautiful, accessible UI components for React and Angular. Own your code — copy source directly into your project with a single CLI command.
+  actions:
+    - text: Get Started
+      link: /getting-started/
+      icon: right-arrow
+      variant: primary
+    - text: All Components
+      link: /all-components/
+      icon: external
+      variant: minimal
+---
+
+import { ComponentShowcase } from '../../components/ComponentShowcase'
+
+<div class="not-content" style="margin-top: 2rem;">
+
+<ComponentShowcase client:load />
+
+<div class="homepage-features">
+  <div class="homepage-feature">
+    <div class="homepage-feature-icon">🔀</div>
+    <h3>Framework Agnostic</h3>
+    <p>Core logic in plain TypeScript. Framework adapters for React and Angular — more coming soon.</p>
+  </div>
+  <div class="homepage-feature">
+    <div class="homepage-feature-icon">📋</div>
+    <h3>Own Your Code</h3>
+    <p>Components are copied into your project. No runtime dependency, no version lock-in.</p>
+  </div>
+  <div class="homepage-feature">
+    <div class="homepage-feature-icon">🎨</div>
+    <h3>Tailwind v4</h3>
+    <p>CSS-first configuration with OKLCH color tokens, @theme, and @custom-variant.</p>
+  </div>
+  <div class="homepage-feature">
+    <div class="homepage-feature-icon">♿</div>
+    <h3>Accessible</h3>
+    <p>WAI-ARIA patterns built into the core. Keyboard navigation and screen reader support included.</p>
+  </div>
+  <div class="homepage-feature">
+    <div class="homepage-feature-icon">🌗</div>
+    <h3>3 Themes</h3>
+    <p>Default, Dark, and Glass themes out of the box. Extend or create your own.</p>
+  </div>
+  <div class="homepage-feature">
+    <div class="homepage-feature-icon">⚡</div>
+    <h3>CLI Powered</h3>
+    <p>Add components with a single command. The CLI handles dependencies and file placement.</p>
+  </div>
+</div>
+
+<footer class="homepage-footer">
+  <p>&copy; 2026 snuxt. All rights reserved.</p>
+  <div>
+    <a href="https://github.com/thepsygeek/snuxt-ui">GitHub</a>
+  </div>
+</footer>
+
+</div>

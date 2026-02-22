@@ -1,0 +1,221 @@
+---
+title: Toast
+description: A brief, auto-dismissing notification message.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { ToastDemo } from '../../../demos/ToastDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A non-intrusive toast notification that appears at the edge of the screen and auto-dismisses. Supports default, success, and destructive variants.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <ToastDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { Button, useToast } from '@snuxt-ui/react';
+
+    export function ToastDemo() {
+      const { toast } = useToast();
+
+      return (
+        <div className="flex items-center gap-3">
+          <Button
+            variant="outline"
+            onClick={() =>
+              toast({ title: 'Success!', description: 'Action completed.' })
+            }
+          >
+            Show Toast
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() =>
+              toast({ title: 'Heads up!', description: 'Something happened.' })
+            }
+          >
+            Another Toast
+          </Button>
+        </div>
+      );
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component, inject } from '@angular/core';
+    import {
+      SnxToasterComponent, SnxToastService,
+    } from '@snuxt-ui/angular';
+    import { SnxButtonComponent } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-toast-demo',
+      standalone: true,
+      imports: [SnxToasterComponent, SnxButtonComponent],
+      template: `
+        <div class="flex items-center gap-3">
+          <snx-button variant="outline"
+            (click)="showDefault()">
+            Show Toast
+          </snx-button>
+          <snx-button variant="outline"
+            (click)="showSuccess()">
+            Success Toast
+          </snx-button>
+        </div>
+        <snx-toaster />
+      `,
+    })
+    export class ToastDemoComponent {
+      private toastService = inject(SnxToastService);
+
+      showDefault() {
+        this.toastService.show({
+          title: 'Heads up!',
+          description: 'Something happened.',
+        });
+      }
+
+      showSuccess() {
+        this.toastService.success(
+          'Success!', 'Action completed.'
+        );
+      }
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add toast
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/toast.css`
+    - `core/toast.ts`
+    - `react/toast.tsx`
+    - `react/hooks/use-toast.ts`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/toast.css`
+    - `core/toast.ts`
+    - `angular/toast.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { useToast, Toaster } from '@snuxt-ui/react'
+```
+
+Make sure to render the `<Toaster />` component once at the root of your app:
+
+```tsx
+// App.tsx
+import { Toaster } from '@snuxt-ui/react'
+
+function App() {
+  return (
+    <>
+      {/* your routes / content */}
+      <Toaster />
+    </>
+  )
+}
+```
+
+### Default Toast
+
+```tsx
+const { toast } = useToast()
+
+toast({ title: 'Saved', description: 'Your changes have been saved.' })
+```
+
+### Success Toast
+
+```tsx
+toast.success('Success!', 'File uploaded successfully.')
+```
+
+### Destructive Toast
+
+```tsx
+toast.destructive('Error', 'Something went wrong. Please try again.')
+```
+
+### Custom Duration
+
+```tsx
+toast.custom({
+  title: 'Reminder',
+  description: 'This toast stays for 10 seconds.',
+  duration: 10000,
+})
+```
+
+### With Action Button
+
+```tsx
+toast.custom({
+  title: 'File deleted',
+  description: 'The file has been removed.',
+  action: {
+    label: 'Undo',
+    onClick: () => restoreFile(),
+  },
+})
+```
+
+### Toaster Positioning
+
+```tsx
+<Toaster position="top-right" />
+<Toaster position="top-left" />
+<Toaster position="bottom-right" />
+<Toaster position="bottom-left" />
+```
+
+## API Reference
+
+### `useToast()` hook
+
+Returns an object with:
+
+| Property | Type | Description |
+|---|---|---|
+| `toast` | `ToastManager` | Toast manager with `.default()`, `.success()`, `.destructive()`, and `.custom()` methods. |
+| `toasts` | `Toast[]` | Current list of active toasts. |
+| `dismiss` | `(id: string) => void` | Dismiss a specific toast by ID. |
+
+### Toast options
+
+<PropsTable props={[
+  { name: 'title', type: 'string', description: 'Toast heading text.' },
+  { name: 'description', type: 'string', description: 'Toast body text.' },
+  { name: 'variant', type: '"default" | "destructive" | "success"', default: '"default"', description: 'Visual style of the toast.' },
+  { name: 'duration', type: 'number', default: '5000', description: 'Auto-dismiss delay in milliseconds. Set to 0 to disable.' },
+  { name: 'action', type: '{ label: string; onClick: () => void }', description: 'Optional action button displayed in the toast.' },
+]} />
+
+### Toaster props
+
+<PropsTable props={[
+  { name: 'position', type: '"top-right" | "top-left" | "bottom-right" | "bottom-left"', default: '"bottom-right"', description: 'Screen corner where toasts appear.' },
+  { name: 'className', type: 'string', description: 'Additional CSS classes on the toaster container.' },
+]} />

@@ -1,0 +1,222 @@
+---
+title: Tabs
+description: Tabbed content panels with keyboard navigation.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { TabsDemo } from '../../../demos/TabsDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A tabbed interface for switching between content panels, with keyboard navigation and ARIA support.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <TabsDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { Tabs, TabsList, TabsTrigger, TabsContent } from '@snuxt-ui/react'
+
+    const tabItems = [
+      { value: 'account' },
+      { value: 'password' },
+      { value: 'settings' },
+    ]
+
+    export function TabsDemo() {
+      return (
+        <Tabs items={tabItems} defaultValue="account">
+          {(api) => (
+            <>
+              <TabsList>
+                <TabsTrigger
+                  isActive={api.value === 'account'}
+                  onClick={() => api.setValue('account')}
+                >
+                  Account
+                </TabsTrigger>
+                <TabsTrigger
+                  isActive={api.value === 'password'}
+                  onClick={() => api.setValue('password')}
+                >
+                  Password
+                </TabsTrigger>
+                <TabsTrigger
+                  isActive={api.value === 'settings'}
+                  onClick={() => api.setValue('settings')}
+                >
+                  Settings
+                </TabsTrigger>
+              </TabsList>
+              {api.value === 'account' && (
+                <TabsContent>
+                  <p className="text-sm text-muted-foreground">
+                    Manage your account settings and preferences.
+                  </p>
+                </TabsContent>
+              )}
+              {api.value === 'password' && (
+                <TabsContent>
+                  <p className="text-sm text-muted-foreground">
+                    Change your password and security options.
+                  </p>
+                </TabsContent>
+              )}
+              {api.value === 'settings' && (
+                <TabsContent>
+                  <p className="text-sm text-muted-foreground">
+                    Configure notifications and display preferences.
+                  </p>
+                </TabsContent>
+              )}
+            </>
+          )}
+        </Tabs>
+      )
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core';
+    import {
+      SnxTabsComponent, SnxTabsListComponent,
+      SnxTabsTriggerComponent, SnxTabsContentComponent,
+    } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-tabs-demo',
+      standalone: true,
+      imports: [
+        SnxTabsComponent, SnxTabsListComponent,
+        SnxTabsTriggerComponent, SnxTabsContentComponent,
+      ],
+      template: `
+        <snx-tabs #tabs [items]="items" defaultValue="account">
+          <snx-tabs-list>
+            <snx-tabs-trigger
+              [isActive]="tabs.isActive('account')"
+              (onClick)="tabs.select('account')">
+              Account
+            </snx-tabs-trigger>
+            <snx-tabs-trigger
+              [isActive]="tabs.isActive('password')"
+              (onClick)="tabs.select('password')">
+              Password
+            </snx-tabs-trigger>
+            <snx-tabs-trigger
+              [isActive]="tabs.isActive('settings')"
+              (onClick)="tabs.select('settings')">
+              Settings
+            </snx-tabs-trigger>
+          </snx-tabs-list>
+          @if (tabs.isActive('account')) {
+            <snx-tabs-content [isActive]="true">
+              <p class="text-sm text-muted-foreground">
+                Manage your account settings and preferences.
+              </p>
+            </snx-tabs-content>
+          }
+          @if (tabs.isActive('password')) {
+            <snx-tabs-content [isActive]="true">
+              <p class="text-sm text-muted-foreground">
+                Change your password and security options.
+              </p>
+            </snx-tabs-content>
+          }
+          @if (tabs.isActive('settings')) {
+            <snx-tabs-content [isActive]="true">
+              <p class="text-sm text-muted-foreground">
+                Configure notifications and display preferences.
+              </p>
+            </snx-tabs-content>
+          }
+        </snx-tabs>
+      `,
+    })
+    export class TabsDemoComponent {
+      items = [
+        { value: 'account', label: 'Account' },
+        { value: 'password', label: 'Password' },
+        { value: 'settings', label: 'Settings' },
+      ];
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add tabs
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/tabs.css`
+    - `core/tabs.ts`
+    - `react/tabs.tsx`
+    - `react/hooks/use-tabs.ts`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/tabs.css`
+    - `core/tabs.ts`
+    - `angular/tabs.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Tabs, TabsList, TabsTrigger, TabsContent } from '@snuxt-ui/react'
+```
+
+### Default
+
+```tsx
+const tabItems = [{ value: 'account' }, { value: 'password' }]
+
+<Tabs items={tabItems} defaultValue="account">
+  {(api) => (
+    <>
+      <TabsList>
+        <TabsTrigger
+          isActive={api.value === 'account'}
+          onClick={() => api.setValue('account')}
+        >
+          Account
+        </TabsTrigger>
+        <TabsTrigger
+          isActive={api.value === 'password'}
+          onClick={() => api.setValue('password')}
+        >
+          Password
+        </TabsTrigger>
+      </TabsList>
+      {api.value === 'account' && (
+        <TabsContent>Account settings here.</TabsContent>
+      )}
+      {api.value === 'password' && (
+        <TabsContent>Password settings here.</TabsContent>
+      )}
+    </>
+  )}
+</Tabs>
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'items', type: '{ value: string }[]', description: 'Tab items configuration.' },
+  { name: 'defaultValue', type: 'string', description: 'Initially active tab value.' },
+  { name: 'children', type: '(api: TabsApi) => ReactNode', description: 'Render function receiving the tabs API.' },
+  { name: 'className', type: 'string', description: 'Additional CSS classes.' },
+]} />

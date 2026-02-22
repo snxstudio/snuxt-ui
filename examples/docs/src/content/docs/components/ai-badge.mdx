@@ -1,0 +1,104 @@
+---
+title: AI Badge
+description: Sparkle-icon badge for marking AI-generated content.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { AiBadgeDemo } from '../../../demos/AiBadgeDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A small badge with a sparkle icon to indicate AI-generated content. Uses a violet/purple gradient theme with three visual variants.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <AiBadgeDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { AiBadge } from '@snuxt-ui/react'
+
+    export function AiBadgeDemo() {
+      return (
+        <div className="flex flex-wrap gap-3">
+          <AiBadge variant="default">AI Generated</AiBadge>
+          <AiBadge variant="prominent">AI Generated</AiBadge>
+          <AiBadge variant="subtle">AI Generated</AiBadge>
+          <AiBadge showIcon={false}>No Icon</AiBadge>
+        </div>
+      )
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core'
+    import { SnxAiBadgeComponent } from '@snuxt-ui/angular'
+
+    @Component({
+      selector: 'app-ai-badge-demo',
+      standalone: true,
+      imports: [SnxAiBadgeComponent],
+      template: `
+        <snx-ai-badge variant="default">AI Generated</snx-ai-badge>
+        <snx-ai-badge variant="prominent">AI Generated</snx-ai-badge>
+        <snx-ai-badge variant="subtle">AI Generated</snx-ai-badge>
+        <snx-ai-badge [showIcon]="false">No Icon</snx-ai-badge>
+      `,
+    })
+    export class AiBadgeDemoComponent {}
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add ai-badge
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/ai-badge.css`
+    - `react/ai-badge.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/ai-badge.css`
+    - `angular/ai-badge.component.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { AiBadge } from '@snuxt-ui/react'
+```
+
+### Variants
+
+```tsx
+<AiBadge variant="default">AI Generated</AiBadge>
+<AiBadge variant="prominent">AI Generated</AiBadge>
+<AiBadge variant="subtle">AI Generated</AiBadge>
+```
+
+### Without Icon
+
+```tsx
+<AiBadge showIcon={false}>AI</AiBadge>
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'variant', type: '"default" | "prominent" | "subtle"', default: '"default"', description: 'Visual style variant.' },
+  { name: 'showIcon', type: 'boolean', default: 'true', description: 'Whether to show the sparkle icon.' },
+  { name: 'children', type: 'ReactNode', description: 'Badge label content.' },
+]} />

@@ -1,0 +1,118 @@
+---
+title: Input
+description: A styled text input field for forms.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { InputDemo } from '../../../demos/InputDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A standard text input with consistent styling, supporting all native HTML input attributes.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <InputDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { Input } from '@snuxt-ui/react'
+
+    export function InputDemo() {
+      return (
+        <div className="flex flex-col gap-3 w-full max-w-sm">
+          <Input placeholder="Email address" />
+          <Input disabled placeholder="Disabled input" />
+          <Input type="file" />
+        </div>
+      )
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core';
+    import { SnxInputComponent } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-input-demo',
+      standalone: true,
+      imports: [SnxInputComponent],
+      template: `
+        <div class="flex flex-col gap-3 w-full max-w-sm">
+          <snx-input placeholder="Email address" />
+          <snx-input [disabled]="true" placeholder="Disabled input" />
+          <snx-input type="file" />
+        </div>
+      `,
+    })
+    export class InputDemoComponent {}
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add input
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/input.css`
+    - `react/input.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/input.css`
+    - `angular/input.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Input } from '@snuxt-ui/react'
+```
+
+### Default
+
+```tsx
+<Input placeholder="Email address" />
+```
+
+### Disabled
+
+```tsx
+<Input disabled placeholder="Disabled input" />
+```
+
+### File Input
+
+```tsx
+<Input type="file" />
+```
+
+### With Label
+
+```tsx
+<div className="flex flex-col gap-1.5">
+  <label htmlFor="email" className="text-sm font-medium">Email</label>
+  <Input id="email" type="email" placeholder="you@example.com" />
+</div>
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'type', type: 'string', default: '"text"', description: 'HTML input type.' },
+  { name: 'placeholder', type: 'string', description: 'Placeholder text.' },
+  { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the input is disabled.' },
+  { name: 'className', type: 'string', description: 'Additional CSS class names.' },
+]} />

@@ -1,0 +1,124 @@
+---
+title: Textarea
+description: A multi-line text input for longer form content.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { TextareaDemo } from '../../../demos/TextareaDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A styled textarea for multi-line text input with all native HTML textarea attributes. Pair it with a character count for bounded input.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <TextareaDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { useState } from 'react'
+    import { Textarea } from '@snuxt-ui/react'
+
+    export function TextareaDemo() {
+      const [value, setValue] = useState('')
+
+      return (
+        <div className="flex flex-col gap-2 w-full max-w-sm">
+          <Textarea
+            placeholder="Type your message here..."
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+            rows={3}
+          />
+          <p className="text-xs text-muted-foreground text-right">
+            {value.length}/280 characters
+          </p>
+        </div>
+      )
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core';
+    import { SnxTextareaComponent } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-textarea-demo',
+      standalone: true,
+      imports: [SnxTextareaComponent],
+      template: `
+        <div class="flex flex-col gap-2 w-full max-w-sm">
+          <snx-textarea
+            placeholder="Type your message here..."
+            [rows]="3" />
+        </div>
+      `,
+    })
+    export class TextareaDemoComponent {}
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add textarea
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/textarea.css`
+    - `react/textarea.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/textarea.css`
+    - `angular/textarea.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Textarea } from '@snuxt-ui/react'
+```
+
+### Default
+
+```tsx
+<Textarea placeholder="Type your message here..." rows={4} />
+```
+
+### With Character Count
+
+```tsx
+const [value, setValue] = useState('')
+
+<div className="flex flex-col gap-2">
+  <Textarea
+    placeholder="Type your message here..."
+    value={value}
+    onChange={(e) => setValue(e.target.value)}
+    rows={3}
+  />
+  <p className="text-xs text-muted-foreground text-right">
+    {value.length}/280 characters
+  </p>
+</div>
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'placeholder', type: 'string', description: 'Placeholder text.' },
+  { name: 'rows', type: 'number', default: '3', description: 'Number of visible text lines.' },
+  { name: 'disabled', type: 'boolean', default: 'false', description: 'Whether the textarea is disabled.' },
+  { name: 'className', type: 'string', description: 'Additional CSS class names.' },
+]} />

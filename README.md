@@ -1,5 +1,5 @@
 <p align="center">
-  <h1 align="center">snx-ui</h1>
+  <h1 align="center">snuxt-ui</h1>
 </p>
 
 <p align="center">
@@ -7,9 +7,9 @@
 </p>
 
 <p align="center">
-  <a href="https://snx-ui.dev/docs"><strong>Documentation</strong></a> ·
-  <a href="https://snx-ui.dev/docs/components"><strong>Components</strong></a> ·
-  <a href="https://snx-ui.dev/docs/themes"><strong>Themes</strong></a>
+  <a href="https://snuxt-ui.dev/docs"><strong>Documentation</strong></a> ·
+  <a href="https://snuxt-ui.dev/docs/components"><strong>Components</strong></a> ·
+  <a href="https://snuxt-ui.dev/docs/themes"><strong>Themes</strong></a>
 </p>
 
 <p align="center">
@@ -24,7 +24,7 @@
 
 ## About
 
-snx-ui is a component library that works differently. Instead of installing a package you depend on forever, our CLI copies production-ready source code directly into your project. You own it. You modify it. No lock-in.
+snuxt-ui is a component library that works differently. Instead of installing a package you depend on forever, our CLI copies production-ready source code directly into your project. You own it. You modify it. No lock-in.
 
 The same component logic powers both React and Angular through a layered architecture — CSS and core behavior are shared, framework adapters are thin wrappers on top.
 
@@ -35,12 +35,12 @@ The same component logic powers both React and Angular through a layered archite
 ### 1. Initialize
 
 ```bash
-npx snx-ui init
+npx snuxt-ui init
 ```
 
 This will:
 - Detect your framework (React or Angular)
-- Create `snx-ui.json` configuration
+- Create `snuxt-ui.json` configuration
 - Set up component and utils directories
 - Generate the `cn()` class utility
 - Inject OKLCH design tokens into your CSS
@@ -48,13 +48,13 @@ This will:
 ### 2. Add Components
 
 ```bash
-npx snx-ui add button dialog tabs
+npx snuxt-ui add button dialog tabs
 ```
 
 Or run without arguments for an interactive picker:
 
 ```bash
-npx snx-ui add
+npx snuxt-ui add
 ```
 
 ### 3. Import Base Styles
@@ -63,7 +63,7 @@ Add the base styles alongside Tailwind in your CSS:
 
 ```css
 @import "tailwindcss";
-@import "@snx-ui/css/base";
+@import "@snuxt-ui/css/base";
 ```
 
 ---
@@ -93,7 +93,7 @@ Simple, styled components with no JavaScript logic required.
 
 ### Interactive (10)
 
-Components with keyboard navigation, ARIA attributes, focus management, and state logic powered by `@snx-ui/core`.
+Components with keyboard navigation, ARIA attributes, focus management, and state logic powered by `@snuxt-ui/core`.
 
 | Component | Description | Core Deps |
 |-----------|-------------|-----------|
@@ -126,31 +126,31 @@ Purpose-built components for AI-powered applications and chat interfaces.
 
 ## CLI Reference
 
-### `npx snx-ui init`
+### `npx snuxt-ui init`
 
-Initialize snx-ui in your project.
+Initialize snuxt-ui in your project.
 
 - Detects framework from `package.json` (React or Angular)
-- Creates `snx-ui.json` with component paths, utils path, and CSS config
+- Creates `snuxt-ui.json` with component paths, utils path, and CSS config
 - Generates `cn()` utility for class merging
 - Injects OKLCH design tokens and dark theme into your CSS file
 
-### `npx snx-ui add [components...]`
+### `npx snuxt-ui add [components...]`
 
 Add one or more components to your project.
 
 ```bash
 # Add specific components
-npx snx-ui add button dialog select
+npx snuxt-ui add button dialog select
 
 # Interactive multi-select picker
-npx snx-ui add
+npx snuxt-ui add
 
 # Overwrite existing files
-npx snx-ui add dialog --overwrite
+npx snuxt-ui add dialog --overwrite
 
 # Dev mode (read from local monorepo)
-npx snx-ui add button --local
+npx snuxt-ui add button --local
 ```
 
 **Options:**
@@ -168,29 +168,29 @@ npx snx-ui add button --local
 - Internal component dependencies (e.g., Dialog pulls in Button)
 
 **Import transforms:**
-All `@snx-ui/core` imports are automatically rewritten to local paths. For example:
+All `@snuxt-ui/core` imports are automatically rewritten to local paths. For example:
 ```typescript
 // Before (source)
-import { cn, trapFocus, lockScroll } from '@snx-ui/core'
+import { cn, trapFocus, lockScroll } from '@snuxt-ui/core'
 
 // After (in your project)
 import { cn } from './utils/cn'
 import { trapFocus, lockScroll } from './utils/dom'
 ```
 
-### `npx snx-ui theme <theme>`
+### `npx snuxt-ui theme <theme>`
 
 Add a theme to your project.
 
 ```bash
 # Dark theme (instructions only — tokens are already in base CSS)
-npx snx-ui theme dark
+npx snuxt-ui theme dark
 
 # Glass theme (copies glass.css + shows instructions)
-npx snx-ui theme glass
+npx snuxt-ui theme glass
 ```
 
-### `npx snx-ui list`
+### `npx snuxt-ui list`
 
 List all 31 available components with their types.
 
@@ -200,7 +200,7 @@ List all 31 available components with their types.
 
 ```
 ┌─────────────────────────────────────────────┐
-│  Layer 3: CLI       npx snx-ui add button   │
+│  Layer 3: CLI       npx snuxt-ui add button   │
 │  Copies code into your project              │
 ├─────────────────────────────────────────────┤
 │  Layer 2: Framework Adapters                │
@@ -222,7 +222,7 @@ Each layer is independent. Use the CSS on its own, wire up core logic with any f
 ### Project Structure
 
 ```
-snx-ui/
+snuxt-ui/
 ├── packages/
 │   ├── css/                  # Layer 0 — Tailwind v4 styles
 │   │   ├── base.css          # Design tokens (OKLCH), dark theme
@@ -288,7 +288,7 @@ document.documentElement.setAttribute('data-theme', 'dark')
 ### Glass Theme (Glassmorphism)
 
 ```bash
-npx snx-ui theme glass
+npx snuxt-ui theme glass
 ```
 
 Then import in your CSS:
@@ -361,8 +361,8 @@ Additional tokens: `--color-secondary`, `--color-accent`, `--color-muted`, `--co
 ### Setup
 
 ```bash
-git clone https://github.com/snxstudio/snx-ui.git
-cd snx-ui
+git clone https://github.com/snxstudio/snuxt-ui.git
+cd snuxt-ui
 pnpm install
 ```
 
@@ -382,11 +382,11 @@ pnpm install
 
 | Package | Size | Format |
 |---------|------|--------|
-| `@snx-ui/core` | ~16 KB | ESM + DTS |
-| `@snx-ui/react` | ~47 KB | ESM + DTS |
-| `snx-ui` (CLI) | ~20 KB | ESM (with `#!/usr/bin/env node` banner) |
-| `@snx-ui/angular` | Source-distributed via CLI | — |
-| `@snx-ui/css` | Pure CSS | — |
+| `@snuxt-ui/core` | ~16 KB | ESM + DTS |
+| `@snuxt-ui/react` | ~47 KB | ESM + DTS |
+| `snuxt-ui` (CLI) | ~20 KB | ESM (with `#!/usr/bin/env node` banner) |
+| `@snuxt-ui/angular` | Source-distributed via CLI | — |
+| `@snuxt-ui/css` | Pure CSS | — |
 
 ### Documentation Site
 

@@ -1,0 +1,138 @@
+---
+title: Dropdown Menu
+description: A menu that opens from a trigger button.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { DropdownMenuDemo } from '../../../demos/DropdownMenuDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A dropdown menu that opens on click, with support for items, separators, and keyboard shortcuts.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <DropdownMenuDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { DropdownMenu, Button } from '@snuxt-ui/react';
+
+    export function DropdownMenuDemo() {
+      return (
+        <div className="flex items-center justify-center">
+          <DropdownMenu
+            trigger={<Button variant="outline">Menu</Button>}
+            items={[
+              { id: 'edit', label: 'Edit', onSelect: () => {} },
+              { id: 'copy', label: 'Copy', shortcut: '⌘C', onSelect: () => {} },
+              { id: 'sep1', type: 'separator', label: '' },
+              { id: 'delete', label: 'Delete', onSelect: () => {} },
+            ]}
+          />
+        </div>
+      );
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core';
+    import { SnxDropdownMenuComponent } from '@snuxt-ui/angular';
+    import { SnxButtonComponent } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-dropdown-menu-demo',
+      standalone: true,
+      imports: [
+        SnxDropdownMenuComponent,
+        SnxButtonComponent,
+      ],
+      template: `
+        <snx-dropdown-menu [items]="items">
+          <snx-button variant="outline">Menu</snx-button>
+        </snx-dropdown-menu>
+      `,
+    })
+    export class DropdownMenuDemoComponent {
+      items = [
+        { id: 'edit', label: 'Edit' },
+        { id: 'copy', label: 'Copy', shortcut: '⌘C' },
+        { id: 'sep1', type: 'separator' as const, label: '' },
+        { id: 'delete', label: 'Delete' },
+      ];
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add dropdown-menu
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/dropdown-menu.css`
+    - `core/dropdown-menu.ts`
+    - `react/dropdown-menu.tsx`
+    - `react/hooks/use-dropdown-menu.ts`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/dropdown-menu.css`
+    - `core/dropdown-menu.ts`
+    - `angular/dropdown-menu.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { DropdownMenu, Button } from '@snuxt-ui/react'
+```
+
+### With Items and Separators
+
+```tsx
+<DropdownMenu
+  trigger={<Button variant="outline">Menu</Button>}
+  items={[
+    { id: 'edit', label: 'Edit', onSelect: () => {} },
+    { id: 'copy', label: 'Copy', shortcut: '⌘C', onSelect: () => {} },
+    { id: 'sep1', type: 'separator', label: '' },
+    { id: 'delete', label: 'Delete', onSelect: () => {} },
+  ]}
+/>
+```
+
+### With Keyboard Shortcuts
+
+```tsx
+<DropdownMenu
+  trigger={<Button variant="outline">Actions</Button>}
+  items={[
+    { id: 'undo', label: 'Undo', shortcut: '⌘Z', onSelect: () => {} },
+    { id: 'redo', label: 'Redo', shortcut: '⇧⌘Z', onSelect: () => {} },
+    { id: 'sep', type: 'separator', label: '' },
+    { id: 'cut', label: 'Cut', shortcut: '⌘X', onSelect: () => {} },
+    { id: 'copy', label: 'Copy', shortcut: '⌘C', onSelect: () => {} },
+    { id: 'paste', label: 'Paste', shortcut: '⌘V', onSelect: () => {} },
+  ]}
+/>
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'trigger', type: 'ReactNode', description: 'Element that opens the menu on click.' },
+  { name: 'items', type: 'MenuItem[]', description: 'Menu items array with id, label, onSelect, optional shortcut and type.' },
+  { name: 'className', type: 'string', description: 'Additional CSS classes.' },
+]} />

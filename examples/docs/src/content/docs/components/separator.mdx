@@ -1,0 +1,143 @@
+---
+title: Separator
+description: A visual divider between content sections.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { SeparatorDemo } from '../../../demos/SeparatorDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A thin line that separates content horizontally or vertically. Renders with the appropriate ARIA role and orientation.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <SeparatorDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { Separator } from '@snuxt-ui/react'
+
+    export function SeparatorDemo() {
+      return (
+        <div className="w-full max-w-sm">
+          <div className="space-y-1">
+            <h4 className="text-sm font-medium leading-none">snuxt-ui</h4>
+            <p className="text-xs text-muted-foreground">
+              A framework-agnostic component library.
+            </p>
+          </div>
+          <Separator className="my-3" />
+          <div className="flex items-center gap-3 text-xs">
+            <span>Docs</span>
+            <Separator orientation="vertical" className="h-4" />
+            <span>Source</span>
+            <Separator orientation="vertical" className="h-4" />
+            <span>CLI</span>
+          </div>
+        </div>
+      )
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core';
+    import { SnxSeparatorComponent } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-separator-demo',
+      standalone: true,
+      imports: [SnxSeparatorComponent],
+      template: `
+        <div class="w-full max-w-sm">
+          <div class="space-y-1">
+            <h4 class="text-sm font-medium leading-none">snuxt-ui</h4>
+            <p class="text-xs text-muted-foreground">
+              A framework-agnostic component library.
+            </p>
+          </div>
+          <snx-separator class="my-3" />
+          <div class="flex items-center gap-3 text-xs">
+            <span>Docs</span>
+            <snx-separator orientation="vertical" class="h-4" />
+            <span>Source</span>
+            <snx-separator orientation="vertical" class="h-4" />
+            <span>CLI</span>
+          </div>
+        </div>
+      `,
+    })
+    export class SeparatorDemoComponent {}
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add separator
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/separator.css`
+    - `react/separator.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/separator.css`
+    - `angular/separator.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Separator } from '@snuxt-ui/react'
+```
+
+### Horizontal
+
+```tsx
+<div>
+  <p>Above</p>
+  <Separator />
+  <p>Below</p>
+</div>
+```
+
+### Vertical
+
+```tsx
+<div className="flex items-center gap-3">
+  <span>Left</span>
+  <Separator orientation="vertical" className="h-4" />
+  <span>Right</span>
+</div>
+```
+
+### Between List Items
+
+```tsx
+<div className="space-y-2">
+  <p>Item one</p>
+  <Separator />
+  <p>Item two</p>
+  <Separator />
+  <p>Item three</p>
+</div>
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'orientation', type: '"horizontal" | "vertical"', default: '"horizontal"', description: 'Direction of the separator line.' },
+  { name: 'className', type: 'string', description: 'Additional CSS class names.' },
+]} />

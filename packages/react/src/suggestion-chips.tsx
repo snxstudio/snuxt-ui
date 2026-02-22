@@ -1,0 +1,27 @@
+import { forwardRef } from 'react'
+import { cn } from '@snuxt-ui/core'
+
+export interface SuggestionChipsProps extends React.HTMLAttributes<HTMLDivElement> {}
+
+export const SuggestionChips = forwardRef<HTMLDivElement, SuggestionChipsProps>(
+  ({ className, ...props }, ref) => (
+    <div ref={ref} className={cn('snx-suggestion-chips', className)} {...props} />
+  )
+)
+SuggestionChips.displayName = 'SuggestionChips'
+
+export interface SuggestionChipProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: 'default' | 'primary' | 'outline'
+}
+
+export const SuggestionChip = forwardRef<HTMLButtonElement, SuggestionChipProps>(
+  ({ variant = 'default', className, ...props }, ref) => (
+    <button
+      ref={ref}
+      type="button"
+      className={cn('snx-suggestion-chip', `snx-suggestion-chip-${variant}`, className)}
+      {...props}
+    />
+  )
+)
+SuggestionChip.displayName = 'SuggestionChip'

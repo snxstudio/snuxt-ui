@@ -1,0 +1,151 @@
+---
+title: Popover
+description: A floating panel anchored to a trigger element.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { PopoverDemo } from '../../../demos/PopoverDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A floating content panel that opens on click, anchored to a trigger element. Closes on click outside or Escape key.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <PopoverDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { Popover, Button, Input } from '@snuxt-ui/react';
+
+    export function PopoverDemo() {
+      return (
+        <div className="flex items-center justify-center">
+          <Popover
+            trigger={<Button variant="outline">Open Popover</Button>}
+          >
+            <div className="flex flex-col gap-2 p-1">
+              <p className="text-sm font-medium">Settings</p>
+              <Input placeholder="Width" />
+              <Input placeholder="Height" />
+              <Button size="sm">Apply</Button>
+            </div>
+          </Popover>
+        </div>
+      );
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core';
+    import { SnxPopoverComponent } from '@snuxt-ui/angular';
+    import { SnxButtonComponent } from '@snuxt-ui/angular';
+    import { SnxInputComponent } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-popover-demo',
+      standalone: true,
+      imports: [
+        SnxPopoverComponent,
+        SnxButtonComponent,
+        SnxInputComponent,
+      ],
+      template: `
+        <snx-popover>
+          <snx-button trigger variant="outline">
+            Open Popover
+          </snx-button>
+          <div class="flex flex-col gap-2 p-1">
+            <p class="text-sm font-medium">Settings</p>
+            <snx-input placeholder="Width" />
+            <snx-input placeholder="Height" />
+            <snx-button size="sm">Apply</snx-button>
+          </div>
+        </snx-popover>
+      `,
+    })
+    export class PopoverDemoComponent {}
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add popover
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/popover.css`
+    - `core/popover.ts`
+    - `react/popover.tsx`
+    - `react/hooks/use-popover.ts`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/popover.css`
+    - `core/popover.ts`
+    - `angular/popover.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Popover } from '@snuxt-ui/react'
+```
+
+### With Form Content
+
+```tsx
+<Popover trigger={<Button variant="outline">Open Popover</Button>}>
+  <div className="flex flex-col gap-2 p-1">
+    <p className="text-sm font-medium">Settings</p>
+    <Input placeholder="Width" />
+    <Input placeholder="Height" />
+    <Button size="sm">Apply</Button>
+  </div>
+</Popover>
+```
+
+### Simple Content
+
+```tsx
+<Popover trigger={<Button variant="ghost">Info</Button>}>
+  <div className="p-2">
+    <p className="text-sm">This is a helpful description.</p>
+  </div>
+</Popover>
+```
+
+### With Custom Styling
+
+```tsx
+<Popover
+  trigger={<Button>Settings</Button>}
+  className="w-80"
+>
+  <div className="flex flex-col gap-3 p-2">
+    <p className="text-sm font-medium">Dimensions</p>
+    <Input placeholder="Width" />
+    <Input placeholder="Height" />
+    <Button size="sm">Apply</Button>
+  </div>
+</Popover>
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'trigger', type: 'ReactNode', description: 'Element that opens the popover on click.' },
+  { name: 'children', type: 'ReactNode', description: 'Popover body content.' },
+  { name: 'className', type: 'string', description: 'Additional CSS classes on the popover panel.' },
+]} />

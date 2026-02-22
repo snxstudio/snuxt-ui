@@ -1,4 +1,4 @@
-import { Button } from '@snx-ui/react'
+import { Button } from '@snuxt-ui/react'
 import { useScrolled } from '../hooks/useScrolled'
 
 interface NavbarProps {
@@ -27,7 +27,7 @@ export function Navbar({ theme, onThemeChange }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
         {/* Logo */}
         <a href="#" className="text-lg font-bold font-mono gradient-text">
-          snx-ui
+          snuxt-ui
         </a>
 
         {/* Center nav links */}

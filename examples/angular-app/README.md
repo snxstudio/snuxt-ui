@@ -1,10 +1,10 @@
-# snx-ui Angular Example
+# snuxt-ui Angular Example
 
-This directory contains example Angular component usage for snx-ui.
+This directory contains example Angular component usage for snuxt-ui.
 
 ## Setup
 
-To use snx-ui in an Angular project:
+To use snuxt-ui in an Angular project:
 
 1. Create a new Angular project:
    ```bash
@@ -12,14 +12,14 @@ To use snx-ui in an Angular project:
    cd my-app
    ```
 
-2. Initialize snx-ui:
+2. Initialize snuxt-ui:
    ```bash
-   npx snx-ui init
+   npx snuxt-ui init
    ```
 
 3. Add components:
    ```bash
-   npx snx-ui add button card dialog
+   npx snuxt-ui add button card dialog
    ```
 
 ## Example Usage
@@ -67,7 +67,7 @@ import {
     <snx-card>
       <snx-card-header>
         <snx-card-title>Welcome</snx-card-title>
-        <snx-card-description>Get started with snx-ui</snx-card-description>
+        <snx-card-description>Get started with snuxt-ui</snx-card-description>
       </snx-card-header>
       <snx-card-content>
         <p>Your content here</p>

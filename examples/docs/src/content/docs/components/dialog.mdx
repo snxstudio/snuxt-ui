@@ -1,0 +1,198 @@
+---
+title: Dialog
+description: A modal dialog with overlay, focus trapping, and keyboard navigation.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { DialogDemo } from '../../../demos/DialogDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A modal dialog that displays above the page with a backdrop overlay. Includes header, description, and footer sub-components. Traps focus, locks scroll, and closes on Escape.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <DialogDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { useState } from 'react'
+    import {
+      Dialog, DialogHeader, DialogTitle,
+      DialogDescription, DialogFooter, Button,
+    } from '@snuxt-ui/react'
+
+    export function DialogDemo() {
+      const [open, setOpen] = useState(false)
+
+      return (
+        <div>
+          <Button onClick={() => setOpen(true)}>Open Dialog</Button>
+          <Dialog open={open} onOpenChange={setOpen}>
+            <DialogHeader>
+              <DialogTitle>Are you sure?</DialogTitle>
+              <DialogDescription>
+                This action cannot be undone. This will permanently delete your
+                account and remove your data from our servers.
+              </DialogDescription>
+            </DialogHeader>
+            <DialogFooter>
+              <Button variant="outline" onClick={() => setOpen(false)}>
+                Cancel
+              </Button>
+              <Button variant="destructive" onClick={() => setOpen(false)}>
+                Confirm
+              </Button>
+            </DialogFooter>
+          </Dialog>
+        </div>
+      )
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core';
+    import { SnxDialogComponent } from '@snuxt-ui/angular';
+    import { SnxButtonComponent } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-dialog-demo',
+      standalone: true,
+      imports: [SnxDialogComponent, SnxButtonComponent],
+      template: `
+        <snx-button (click)="dialog.show()">
+          Open Dialog
+        </snx-button>
+        <snx-dialog #dialog>
+          <h2 class="dialog-title">Are you sure?</h2>
+          <p class="dialog-description">
+            This action cannot be undone. This will permanently
+            delete your account and remove your data.
+          </p>
+          <div class="dialog-footer">
+            <snx-button variant="outline"
+              (click)="dialog.close()">Cancel</snx-button>
+            <snx-button variant="destructive"
+              (click)="dialog.close()">Confirm</snx-button>
+          </div>
+        </snx-dialog>
+      `,
+    })
+    export class DialogDemoComponent {}
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add dialog
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/dialog.css`
+    - `core/dialog.ts`
+    - `react/dialog.tsx`
+    - `react/hooks/use-dialog.ts`
+
+    Dialog also depends on the Button component internally.
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/dialog.css`
+    - `core/dialog.ts`
+    - `angular/dialog.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  Dialog, DialogHeader, DialogTitle,
+  DialogDescription, DialogFooter,
+} from '@snuxt-ui/react'
+```
+
+### Confirmation Dialog
+
+```tsx
+const [open, setOpen] = useState(false)
+
+<Button onClick={() => setOpen(true)}>Delete Account</Button>
+<Dialog open={open} onOpenChange={setOpen}>
+  <DialogHeader>
+    <DialogTitle>Are you sure?</DialogTitle>
+    <DialogDescription>
+      This action cannot be undone. This will permanently delete your
+      account and remove your data from our servers.
+    </DialogDescription>
+  </DialogHeader>
+  <DialogFooter>
+    <Button variant="outline" onClick={() => setOpen(false)}>
+      Cancel
+    </Button>
+    <Button variant="destructive" onClick={() => setOpen(false)}>
+      Confirm
+    </Button>
+  </DialogFooter>
+</Dialog>
+```
+
+### Alert Dialog
+
+```tsx
+const [open, setOpen] = useState(false)
+
+<Button onClick={() => setOpen(true)}>Show Alert</Button>
+<Dialog open={open} onOpenChange={setOpen}>
+  <DialogHeader>
+    <DialogTitle>Session Expired</DialogTitle>
+    <DialogDescription>
+      Your session has expired. Please log in again to continue.
+    </DialogDescription>
+  </DialogHeader>
+  <DialogFooter>
+    <Button onClick={() => setOpen(false)}>OK</Button>
+  </DialogFooter>
+</Dialog>
+```
+
+### Non-modal Dialog
+
+```tsx
+<Dialog open={open} onOpenChange={setOpen} modal={false}>
+  <DialogHeader>
+    <DialogTitle>Note</DialogTitle>
+    <DialogDescription>
+      This dialog does not block interaction with the rest of the page.
+    </DialogDescription>
+  </DialogHeader>
+</Dialog>
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'open', type: 'boolean', description: 'Whether the dialog is visible.' },
+  { name: 'onOpenChange', type: '(open: boolean) => void', description: 'Called when open state changes (close button, overlay click, or Escape key).' },
+  { name: 'modal', type: 'boolean', default: 'true', description: 'When true, traps focus and locks page scroll.' },
+  { name: 'children', type: 'ReactNode', description: 'Dialog content (DialogHeader, DialogFooter, etc.).' },
+]} />
+
+### Sub-components
+
+| Component | Description |
+|---|---|
+| `DialogHeader` | Container for the title and description. |
+| `DialogTitle` | The heading of the dialog. Renders an `<h2>`. |
+| `DialogDescription` | Supplementary text below the title. Renders a `<p>`. |
+| `DialogFooter` | Container for action buttons, aligned to the end. |

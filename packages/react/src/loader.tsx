@@ -1,4 +1,4 @@
-import { cn } from '@snx-ui/core'
+import { cn } from '@snuxt-ui/core'
 
 export interface LoaderProps extends React.HTMLAttributes<HTMLDivElement> {
   size?: 'sm' | 'md' | 'lg' | 'xl'

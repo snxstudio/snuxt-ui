@@ -7,18 +7,18 @@ import path from 'node:path'
 import fs from 'node:fs'
 
 export const initCommand = new Command('init')
-  .description('Initialize snx-ui in your project')
+  .description('Initialize snuxt-ui in your project')
   .action(async () => {
-    console.log(pc.bold('\n  snx-ui init\n'))
+    console.log(pc.bold('\n  snuxt-ui init\n'))
 
     const cwd = process.cwd()
 
     // Check if already initialized
-    if (await fileExists(path.join(cwd, 'snx-ui.json'))) {
+    if (await fileExists(path.join(cwd, 'snuxt-ui.json'))) {
       const { overwrite } = await prompts({
         type: 'confirm',
         name: 'overwrite',
-        message: 'snx-ui.json already exists. Overwrite?',
+        message: 'snuxt-ui.json already exists. Overwrite?',
         initial: false,
       })
       if (!overwrite) {
@@ -78,7 +78,7 @@ export const initCommand = new Command('init')
 
     // Create config
     const config = {
-      $schema: 'https://snx-ui.dev/schema.json',
+      $schema: 'https://snuxt-ui.dev/schema.json',
       framework,
       typescript,
       tailwind: {
@@ -93,10 +93,10 @@ export const initCommand = new Command('init')
 
     // Write config file
     await writeFile(
-      path.join(cwd, 'snx-ui.json'),
+      path.join(cwd, 'snuxt-ui.json'),
       JSON.stringify(config, null, 2)
     )
-    console.log(pc.green('  Created snx-ui.json'))
+    console.log(pc.green('  Created snuxt-ui.json'))
 
     // Ensure component directory exists
     await ensureDir(path.join(cwd, componentDir))
@@ -115,7 +115,7 @@ export const initCommand = new Command('init')
     console.log(pc.green(`  Created ${utilsDir}/cn${ext}`))
 
     // Copy base CSS tokens
-    const baseCssContent = `/* snx-ui design tokens */
+    const baseCssContent = `/* snuxt-ui design tokens */
 @import 'tailwindcss';
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
@@ -174,7 +174,7 @@ export const initCommand = new Command('init')
     const cssFullPath = path.join(cwd, cssPath)
     if (await fileExists(cssFullPath)) {
       const existing = fs.readFileSync(cssFullPath, 'utf-8')
-      if (!existing.includes('snx-ui design tokens')) {
+      if (!existing.includes('snuxt-ui design tokens')) {
         fs.writeFileSync(cssFullPath, baseCssContent + '\n' + existing)
         console.log(pc.green(`  Added design tokens to ${cssPath}`))
       } else {
@@ -185,6 +185,6 @@ export const initCommand = new Command('init')
       console.log(pc.green(`  Created ${cssPath} with design tokens`))
     }
 
-    console.log(pc.bold(pc.green('\n  snx-ui initialized successfully!\n')))
-    console.log(`  Run ${pc.cyan('npx snx-ui add button')} to add your first component.\n`)
+    console.log(pc.bold(pc.green('\n  snuxt-ui initialized successfully!\n')))
+    console.log(`  Run ${pc.cyan('npx snuxt-ui add button')} to add your first component.\n`)
   })

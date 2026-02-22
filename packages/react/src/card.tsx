@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { cn } from '@snx-ui/core'
+import { cn } from '@snuxt-ui/core'
 
 export const Card = forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (

@@ -1,0 +1,168 @@
+---
+title: Feedback
+description: Thumbs up/down feedback buttons with optional text input form.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { FeedbackDemo } from '../../../demos/FeedbackDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+Thumbs up/down feedback buttons for rating AI responses. Selected states use green (up) and red (down). Optionally shows a text feedback form when downvoted.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <FeedbackDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { useState } from 'react'
+    import {
+      Feedback, FeedbackButton, FeedbackForm,
+      FeedbackInput, FeedbackSubmit,
+    } from '@snuxt-ui/react'
+
+    export function FeedbackDemo() {
+      const [selected, setSelected] = useState<'up' | 'down' | null>(null)
+
+      return (
+        <div>
+          <Feedback>
+            <FeedbackButton
+              type="up"
+              selected={selected === 'up'}
+              onClick={() => setSelected(selected === 'up' ? null : 'up')}
+            />
+            <FeedbackButton
+              type="down"
+              selected={selected === 'down'}
+              onClick={() => setSelected(selected === 'down' ? null : 'down')}
+            />
+          </Feedback>
+          {selected === 'down' && (
+            <FeedbackForm>
+              <FeedbackInput placeholder="What could be improved?" />
+              <FeedbackSubmit>Send</FeedbackSubmit>
+            </FeedbackForm>
+          )}
+        </div>
+      )
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component, signal } from '@angular/core'
+    import {
+      SnxFeedbackComponent, SnxFeedbackButtonComponent,
+      SnxFeedbackFormComponent, SnxFeedbackInputComponent,
+      SnxFeedbackSubmitComponent,
+    } from '@snuxt-ui/angular'
+
+    @Component({
+      selector: 'app-feedback-demo',
+      standalone: true,
+      imports: [
+        SnxFeedbackComponent, SnxFeedbackButtonComponent,
+        SnxFeedbackFormComponent, SnxFeedbackInputComponent,
+        SnxFeedbackSubmitComponent,
+      ],
+      template: `
+        <snx-feedback>
+          <snx-feedback-btn
+            type="up"
+            [selected]="selected() === 'up'"
+            (click)="toggle('up')" />
+          <snx-feedback-btn
+            type="down"
+            [selected]="selected() === 'down'"
+            (click)="toggle('down')" />
+        </snx-feedback>
+        @if (selected() === 'down') {
+          <snx-feedback-form>
+            <snx-feedback-input placeholder="What could be improved?" />
+            <snx-feedback-submit>Send</snx-feedback-submit>
+          </snx-feedback-form>
+        }
+      `,
+    })
+    export class FeedbackDemoComponent {
+      selected = signal<'up' | 'down' | null>(null)
+      toggle(type: 'up' | 'down') {
+        this.selected.update(v => v === type ? null : type)
+      }
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add feedback
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/feedback.css`
+    - `react/feedback.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/feedback.css`
+    - `angular/feedback.component.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  Feedback, FeedbackButton, FeedbackSeparator,
+  FeedbackForm, FeedbackInput, FeedbackSubmit,
+} from '@snuxt-ui/react'
+```
+
+### Basic
+
+```tsx
+<Feedback>
+  <FeedbackButton type="up" selected={false} onClick={() => {}} />
+  <FeedbackButton type="down" selected={false} onClick={() => {}} />
+</Feedback>
+```
+
+### With Separator
+
+```tsx
+<Feedback>
+  <FeedbackButton type="up" />
+  <FeedbackSeparator />
+  <FeedbackButton type="down" />
+</Feedback>
+```
+
+### With Feedback Form
+
+```tsx
+<FeedbackForm>
+  <FeedbackInput placeholder="What went wrong?" />
+  <FeedbackSubmit>Submit</FeedbackSubmit>
+</FeedbackForm>
+```
+
+## API Reference
+
+### FeedbackButton
+
+<PropsTable props={[
+  { name: 'type', type: '"up" | "down"', description: 'Thumbs direction.' },
+  { name: 'selected', type: 'boolean', default: 'false', description: 'Whether the button is in selected state.' },
+  { name: 'onClick', type: '() => void', description: 'Click handler.' },
+]} />

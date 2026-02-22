@@ -1,5 +1,5 @@
 {
-  "name": "@snx-ui/angular",
+  "name": "@snuxt-ui/angular",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -10,7 +10,7 @@
     "clean": "echo 'nothing to clean'"
   },
   "dependencies": {
-    "@snx-ui/core": "workspace:*"
+    "@snuxt-ui/core": "workspace:*"
   },
   "peerDependencies": {
     "@angular/core": "^19.0.0",

@@ -1,0 +1,155 @@
+---
+title: Loader
+description: An animated loading spinner.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { LoaderDemo } from '../../../demos/LoaderDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A spinning loader indicator available in multiple sizes and variants. Includes a screen-reader-only label for accessibility.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <LoaderDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { Loader } from '@snuxt-ui/react';
+
+    export function LoaderDemo() {
+      return (
+        <div className="flex items-center gap-4">
+          <div className="flex flex-col items-center gap-1">
+            <Loader size="sm" />
+            <span className="text-xs text-muted-foreground">sm</span>
+          </div>
+          <div className="flex flex-col items-center gap-1">
+            <Loader size="md" />
+            <span className="text-xs text-muted-foreground">md</span>
+          </div>
+          <div className="flex flex-col items-center gap-1">
+            <Loader size="lg" />
+            <span className="text-xs text-muted-foreground">lg</span>
+          </div>
+        </div>
+      );
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core';
+    import { SnxLoaderComponent } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-loader-demo',
+      standalone: true,
+      imports: [SnxLoaderComponent],
+      template: `
+        <div class="flex items-center gap-4">
+          <div class="flex flex-col items-center gap-1">
+            <snx-loader size="sm" />
+            <span class="text-xs text-muted-foreground">sm</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <snx-loader size="md" />
+            <span class="text-xs text-muted-foreground">md</span>
+          </div>
+          <div class="flex flex-col items-center gap-1">
+            <snx-loader size="lg" />
+            <span class="text-xs text-muted-foreground">lg</span>
+          </div>
+        </div>
+      `,
+    })
+    export class LoaderDemoComponent {}
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add loader
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/loader.css`
+    - `react/loader.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/loader.css`
+    - `angular/loader.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Loader } from '@snuxt-ui/react'
+```
+
+### Small
+
+```tsx
+<Loader size="sm" />
+```
+
+### Medium (Default)
+
+```tsx
+<Loader size="md" />
+```
+
+### Large
+
+```tsx
+<Loader size="lg" />
+```
+
+### Extra Large
+
+```tsx
+<Loader size="xl" />
+```
+
+### Muted Variant
+
+```tsx
+<Loader variant="muted" />
+```
+
+### Inline with Text
+
+```tsx
+<div className="flex items-center gap-2">
+  <Loader size="sm" />
+  <span>Loading data...</span>
+</div>
+```
+
+### Full Page
+
+```tsx
+<div className="flex items-center justify-center h-64">
+  <Loader size="lg" />
+</div>
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'size', type: '"sm" | "md" | "lg" | "xl"', default: '"md"', description: 'Size of the spinner.' },
+  { name: 'variant', type: '"primary" | "muted"', default: '"primary"', description: 'Color variant of the spinner.' },
+  { name: 'className', type: 'string', description: 'Additional CSS class names.' },
+]} />

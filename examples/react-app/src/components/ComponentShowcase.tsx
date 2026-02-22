@@ -1,4 +1,4 @@
-import { Tabs, TabsList, TabsTrigger, TabsContent, Badge } from '@snx-ui/react'
+import { Tabs, TabsList, TabsTrigger, TabsContent, Badge } from '@snuxt-ui/react'
 import { SectionHeader } from './SectionHeader'
 import { ComponentCard } from './ComponentCard'
 import { useInView } from '../hooks/useInView'

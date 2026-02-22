@@ -1,5 +1,5 @@
 {
-  "name": "@snx-ui/react",
+  "name": "@snuxt-ui/react",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -19,7 +19,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@snx-ui/core": "workspace:*"
+    "@snuxt-ui/core": "workspace:*"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",

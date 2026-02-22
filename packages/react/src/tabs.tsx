@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
-import { cn } from '@snx-ui/core'
+import { cn } from '@snuxt-ui/core'
 import { useTabs } from './hooks/use-tabs'
-import type { TabItem } from '@snx-ui/core'
+import type { TabItem } from '@snuxt-ui/core'
 
 export interface TabsProps {
   items: TabItem[]

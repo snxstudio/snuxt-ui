@@ -70,3 +70,25 @@ export type { CounterProps } from './counter'
 
 export { Alert, AlertTitle, AlertDescription } from './alert'
 export type { AlertProps } from './alert'
+
+// AI components
+export { PromptInput, PromptInputTextarea, PromptInputFooter, PromptInputActions, PromptInputCharCount, PromptInputAttachments, PromptInputAttachment } from './prompt-input'
+export type { PromptInputTextareaProps, PromptInputCharCountProps, PromptInputAttachmentProps } from './prompt-input'
+
+export { ChatBubble, ChatBubbleAvatar, ChatBubbleContent, ChatBubbleTimestamp, ChatBubbleTyping } from './chat-bubble'
+export type { ChatBubbleProps, ChatBubbleAvatarProps } from './chat-bubble'
+
+export { AiBadge } from './ai-badge'
+export type { AiBadgeProps } from './ai-badge'
+
+export { SuggestionChips, SuggestionChip } from './suggestion-chips'
+export type { SuggestionChipsProps, SuggestionChipProps } from './suggestion-chips'
+
+export { SourceCards, SourceCard } from './source-card'
+export type { SourceCardsProps, SourceCardProps } from './source-card'
+
+export { StreamingText, StreamingTextFadeIn, StreamingTextWord, StreamingTextLine, StreamingTextSkeleton, StreamingTextSkeletonLine } from './streaming-text'
+export type { StreamingTextProps } from './streaming-text'
+
+export { Feedback, FeedbackButton, FeedbackSeparator, FeedbackForm, FeedbackInput, FeedbackSubmit } from './feedback'
+export type { FeedbackButtonProps } from './feedback'

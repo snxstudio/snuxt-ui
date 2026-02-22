@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react'
-import { createAccordion, type AccordionItemConfig, type AccordionConfig } from '@snx-ui/core'
+import { createAccordion, type AccordionItemConfig, type AccordionConfig } from '@snuxt-ui/core'
 
 export function useAccordion(items: AccordionItemConfig[], config: Omit<AccordionConfig, 'onValueChange'> = {}) {
   const [expandedValues, setExpandedValues] = useState<string[]>([])

@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, CardHeader, CardTitle, Input, Badge, Switch } from '@snx-ui/react'
+import { Button, Card, CardContent, CardHeader, CardTitle, Input, Badge, Switch } from '@snuxt-ui/react'
 import { SectionHeader } from './SectionHeader'
 import { useInView } from '../hooks/useInView'
 import { useState } from 'react'

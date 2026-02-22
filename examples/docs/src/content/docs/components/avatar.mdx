@@ -1,0 +1,121 @@
+---
+title: Avatar
+description: A circular avatar with fallback initials.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { AvatarDemo } from '../../../demos/AvatarDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A circular avatar component that displays an image or fallback initials. Falls back gracefully when an image fails to load.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <AvatarDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { Avatar } from '@snuxt-ui/react'
+
+    export function AvatarDemo() {
+      return (
+        <div className="flex gap-3 items-center">
+          <Avatar fallback="SN" />
+          <Avatar fallback="UI" />
+          <Avatar fallback="?" />
+        </div>
+      )
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core';
+    import { SnxAvatarComponent } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-avatar-demo',
+      standalone: true,
+      imports: [SnxAvatarComponent],
+      template: `
+        <div class="flex gap-3 items-center">
+          <snx-avatar fallback="SN" />
+          <snx-avatar fallback="UI" />
+          <snx-avatar fallback="?" />
+        </div>
+      `,
+    })
+    export class AvatarDemoComponent {}
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add avatar
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/avatar.css`
+    - `react/avatar.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/avatar.css`
+    - `angular/avatar.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Avatar } from '@snuxt-ui/react'
+```
+
+### With Initials
+
+```tsx
+<Avatar fallback="SN" />
+<Avatar fallback="UI" />
+```
+
+### With Image
+
+```tsx
+<Avatar src="/avatar.jpg" alt="User" fallback="U" />
+```
+
+### Fallback on Error
+
+```tsx
+// If the image fails to load, the fallback initials are shown
+<Avatar src="/broken-link.jpg" alt="User" fallback="JD" />
+```
+
+### Group
+
+```tsx
+<div className="flex -space-x-2">
+  <Avatar fallback="A" />
+  <Avatar fallback="B" />
+  <Avatar fallback="C" />
+</div>
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'fallback', type: 'string', description: 'Initials displayed when no image is provided or image fails to load.' },
+  { name: 'src', type: 'string', description: 'Image URL for the avatar.' },
+  { name: 'alt', type: 'string', description: 'Alt text for the image.' },
+  { name: 'className', type: 'string', description: 'Additional CSS class names.' },
+]} />

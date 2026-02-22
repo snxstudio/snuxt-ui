@@ -1,0 +1,127 @@
+---
+title: Source Card
+description: Compact citation cards with favicon, title, domain, and numbered index.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { SourceCardDemo } from '../../../demos/SourceCardDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+Compact citation cards for displaying AI response sources. Renders in a 2-column grid with favicon, title, domain, and optional numbered index.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <SourceCardDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { SourceCards, SourceCard } from '@snuxt-ui/react'
+
+    export function SourceCardDemo() {
+      return (
+        <SourceCards>
+          <SourceCard
+            href="https://developer.mozilla.org"
+            favicon="https://developer.mozilla.org/favicon-48x48.png"
+            title="CSS Cascade Layers - MDN"
+            domain="developer.mozilla.org"
+            index={1}
+          />
+          <SourceCard
+            href="https://web.dev"
+            favicon="https://web.dev/favicon-48x48.png"
+            title="Learn CSS Layers"
+            domain="web.dev"
+            index={2}
+          />
+        </SourceCards>
+      )
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core'
+    import { SnxSourceCardsComponent, SnxSourceCardComponent } from '@snuxt-ui/angular'
+
+    @Component({
+      selector: 'app-source-demo',
+      standalone: true,
+      imports: [SnxSourceCardsComponent, SnxSourceCardComponent],
+      template: `
+        <snx-source-cards>
+          <snx-source-card
+            href="https://developer.mozilla.org"
+            favicon="https://developer.mozilla.org/favicon-48x48.png"
+            title="CSS Cascade Layers - MDN"
+            domain="developer.mozilla.org"
+            [index]="1" />
+          <snx-source-card
+            href="https://web.dev"
+            title="Learn CSS Layers"
+            domain="web.dev"
+            [index]="2" />
+        </snx-source-cards>
+      `,
+    })
+    export class SourceDemoComponent {}
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add source-card
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/source-card.css`
+    - `react/source-card.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/source-card.css`
+    - `angular/source-card.component.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { SourceCards, SourceCard } from '@snuxt-ui/react'
+```
+
+### Basic Grid
+
+```tsx
+<SourceCards>
+  <SourceCard
+    href="https://example.com"
+    favicon="https://example.com/favicon.ico"
+    title="Example Article"
+    domain="example.com"
+    index={1}
+  />
+</SourceCards>
+```
+
+## API Reference
+
+### SourceCard
+
+<PropsTable props={[
+  { name: 'href', type: 'string', description: 'Link URL for the citation.' },
+  { name: 'favicon', type: 'string', description: 'Favicon image URL.' },
+  { name: 'title', type: 'string', description: 'Source title text.' },
+  { name: 'domain', type: 'string', description: 'Domain name to display.' },
+  { name: 'index', type: 'number', description: 'Numbered index badge.' },
+]} />

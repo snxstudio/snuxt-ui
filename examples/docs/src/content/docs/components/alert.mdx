@@ -1,0 +1,141 @@
+---
+title: Alert
+description: A callout for important messages.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { AlertDemo } from '../../../demos/AlertDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+An alert component for displaying important messages with title and description. Supports multiple visual variants for different severity levels.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <AlertDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { Alert, AlertTitle, AlertDescription } from '@snuxt-ui/react';
+
+    export function AlertDemo() {
+      return (
+        <div className="flex flex-col gap-3 w-full">
+          <Alert variant="default">
+            <AlertTitle>Heads up!</AlertTitle>
+            <AlertDescription>
+              You can add components to your app using the CLI.
+            </AlertDescription>
+          </Alert>
+          <Alert variant="success">
+            <AlertTitle>All done!</AlertTitle>
+            <AlertDescription>
+              Your changes have been saved successfully.
+            </AlertDescription>
+          </Alert>
+        </div>
+      );
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core';
+    import {
+      SnxAlertComponent, SnxAlertTitleComponent,
+      SnxAlertDescriptionComponent,
+    } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-alert-demo',
+      standalone: true,
+      imports: [
+        SnxAlertComponent, SnxAlertTitleComponent,
+        SnxAlertDescriptionComponent,
+      ],
+      template: `
+        <div class="flex flex-col gap-3 w-full">
+          <snx-alert variant="default">
+            <snx-alert-title>Heads up!</snx-alert-title>
+            <snx-alert-description>
+              You can add components to your app using the CLI.
+            </snx-alert-description>
+          </snx-alert>
+          <snx-alert variant="success">
+            <snx-alert-title>All done!</snx-alert-title>
+            <snx-alert-description>
+              Your changes have been saved successfully.
+            </snx-alert-description>
+          </snx-alert>
+        </div>
+      `,
+    })
+    export class AlertDemoComponent {}
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add alert
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/alert.css`
+    - `react/alert.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/alert.css`
+    - `angular/alert.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Alert, AlertTitle, AlertDescription } from '@snuxt-ui/react'
+```
+
+### Default
+
+```tsx
+<Alert variant="default">
+  <AlertTitle>Heads up!</AlertTitle>
+  <AlertDescription>You can add components using the CLI.</AlertDescription>
+</Alert>
+```
+
+### Success
+
+```tsx
+<Alert variant="success">
+  <AlertTitle>All done!</AlertTitle>
+  <AlertDescription>Your changes have been saved successfully.</AlertDescription>
+</Alert>
+```
+
+### Destructive
+
+```tsx
+<Alert variant="destructive">
+  <AlertTitle>Error</AlertTitle>
+  <AlertDescription>Something went wrong. Please try again.</AlertDescription>
+</Alert>
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'variant', type: '"default" | "success" | "destructive"', default: '"default"', description: 'Visual style variant.' },
+  { name: 'className', type: 'string', description: 'Additional CSS classes.' },
+  { name: 'children', type: 'ReactNode', description: 'Alert sub-components (AlertTitle, AlertDescription).' },
+]} />

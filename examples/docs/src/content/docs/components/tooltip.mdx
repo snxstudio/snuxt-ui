@@ -1,0 +1,136 @@
+---
+title: Tooltip
+description: A popup that displays informative text on hover.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { TooltipDemo } from '../../../demos/TooltipDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A lightweight tooltip that appears on hover with configurable content, delay, and positioning.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <TooltipDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { Tooltip, Button } from '@snuxt-ui/react';
+
+    export function TooltipDemo() {
+      return (
+        <div className="flex items-center gap-3">
+          <Tooltip content="Save your changes">
+            <Button variant="outline">Hover me</Button>
+          </Tooltip>
+          <Tooltip content="Delete this item">
+            <Button variant="outline">Or me</Button>
+          </Tooltip>
+        </div>
+      );
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core';
+    import { SnxTooltipDirective } from '@snuxt-ui/angular';
+    import { SnxButtonComponent } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-tooltip-demo',
+      standalone: true,
+      imports: [SnxTooltipDirective, SnxButtonComponent],
+      template: `
+        <div class="flex items-center gap-3">
+          <snx-button variant="outline"
+            snxTooltip="Save your changes">
+            Hover me
+          </snx-button>
+          <snx-button variant="outline"
+            snxTooltip="Delete this item">
+            Or me
+          </snx-button>
+        </div>
+      `,
+    })
+    export class TooltipDemoComponent {}
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add tooltip
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/tooltip.css`
+    - `core/tooltip.ts`
+    - `react/tooltip.tsx`
+    - `react/hooks/use-tooltip.ts`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/tooltip.css`
+    - `core/tooltip.ts`
+    - `angular/tooltip.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Tooltip } from '@snuxt-ui/react'
+```
+
+### Basic
+
+```tsx
+<Tooltip content="Save your changes">
+  <Button>Hover me</Button>
+</Tooltip>
+```
+
+### Bottom Placement
+
+```tsx
+<Tooltip content="Tooltip below" side="bottom">
+  <Button variant="outline">Hover me</Button>
+</Tooltip>
+```
+
+### Custom Delay
+
+```tsx
+<Tooltip content="Appears after 500ms" delay={500}>
+  <Button variant="outline">Slow tooltip</Button>
+</Tooltip>
+```
+
+### With Custom Styling
+
+```tsx
+<Tooltip content="Styled tooltip" className="bg-blue-600 text-white">
+  <Button variant="ghost">Custom style</Button>
+</Tooltip>
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'content', type: 'ReactNode', description: 'Tooltip text or content.' },
+  { name: 'children', type: 'ReactElement', description: 'Trigger element that activates the tooltip on hover.' },
+  { name: 'side', type: '"top" | "bottom"', default: '"top"', description: 'Which side of the trigger the tooltip appears on.' },
+  { name: 'delay', type: 'number', description: 'Delay in milliseconds before the tooltip appears.' },
+  { name: 'className', type: 'string', description: 'Additional CSS classes on the tooltip element.' },
+]} />

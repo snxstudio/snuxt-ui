@@ -1,14 +1,14 @@
 {
-  "name": "snx-ui-angular-example",
+  "name": "snuxt-ui-angular-example",
   "private": true,
   "version": "0.0.0",
-  "description": "Angular demo for snx-ui components",
+  "description": "Angular demo for snuxt-ui components",
   "scripts": {
     "build": "echo 'Angular example - see README for setup'",
     "test": "echo 'Angular example - see README for setup'"
   },
   "dependencies": {
-    "@snx-ui/core": "workspace:*",
-    "@snx-ui/angular": "workspace:*"
+    "@snuxt-ui/core": "workspace:*",
+    "@snuxt-ui/angular": "workspace:*"
   }
 }

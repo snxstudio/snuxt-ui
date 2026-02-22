@@ -1,4 +1,4 @@
-import { Badge, Separator } from '@snx-ui/react'
+import { Badge, Separator } from '@snuxt-ui/react'
 
 const links = [
   { label: 'GitHub', href: 'https://github.com', external: true },
@@ -17,7 +17,7 @@ export function Footer() {
         <div className="mt-8 flex flex-col items-center text-center gap-4">
           {/* Logo */}
           <span className="text-lg font-bold font-mono gradient-text">
-            snx-ui
+            snuxt-ui
           </span>
 
           {/* Tagline */}
@@ -51,7 +51,7 @@ export function Footer() {
           </div>
 
           {/* Copyright */}
-          <p className="text-xs text-muted-foreground">&copy; 2026 snx-ui</p>
+          <p className="text-xs text-muted-foreground">&copy; 2026 snuxt-ui</p>
         </div>
       </div>
     </footer>

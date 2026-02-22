@@ -1,0 +1,169 @@
+---
+title: Prompt Input
+description: Chat-style textarea with send button, attachments, and character count.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { PromptInputDemo } from '../../../demos/PromptInputDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A composable prompt input for AI chat interfaces. Includes a resizable textarea, action buttons slot, character count, and file attachment pills.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <PromptInputDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { useState } from 'react'
+    import {
+      PromptInput, PromptInputTextarea, PromptInputFooter,
+      PromptInputActions, PromptInputCharCount,
+      PromptInputAttachments, PromptInputAttachment, Button,
+    } from '@snuxt-ui/react'
+
+    export function PromptInputDemo() {
+      const [value, setValue] = useState('')
+
+      return (
+        <PromptInput>
+          <PromptInputAttachments>
+            <PromptInputAttachment onRemove={() => {}}>report.pdf</PromptInputAttachment>
+          </PromptInputAttachments>
+          <PromptInputTextarea
+            placeholder="Ask me anything..."
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <PromptInputFooter>
+            <PromptInputActions>
+              <Button variant="primary" size="icon" disabled={!value.trim()}>Send</Button>
+            </PromptInputActions>
+            <PromptInputCharCount count={value.length} max={1000} />
+          </PromptInputFooter>
+        </PromptInput>
+      )
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component, signal } from '@angular/core'
+    import {
+      SnxPromptInputComponent, SnxPromptInputTextareaComponent,
+      SnxPromptInputFooterComponent, SnxPromptInputActionsComponent,
+      SnxPromptInputCharCountComponent,
+    } from '@snuxt-ui/angular'
+
+    @Component({
+      selector: 'app-prompt-demo',
+      standalone: true,
+      imports: [
+        SnxPromptInputComponent, SnxPromptInputTextareaComponent,
+        SnxPromptInputFooterComponent, SnxPromptInputActionsComponent,
+        SnxPromptInputCharCountComponent,
+      ],
+      template: `
+        <snx-prompt-input>
+          <snx-prompt-input-textarea placeholder="Ask me anything..." />
+          <snx-prompt-input-footer>
+            <snx-prompt-input-actions>
+              <button class="snx-btn snx-btn-primary snx-btn-icon">Send</button>
+            </snx-prompt-input-actions>
+            <snx-prompt-input-char-count [count]="0" [max]="1000" />
+          </snx-prompt-input-footer>
+        </snx-prompt-input>
+      `,
+    })
+    export class PromptDemoComponent {}
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add prompt-input
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/prompt-input.css`
+    - `react/prompt-input.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/prompt-input.css`
+    - `angular/prompt-input.component.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  PromptInput, PromptInputTextarea, PromptInputFooter,
+  PromptInputActions, PromptInputCharCount,
+} from '@snuxt-ui/react'
+```
+
+### Basic
+
+```tsx
+<PromptInput>
+  <PromptInputTextarea placeholder="Type a message..." />
+  <PromptInputFooter>
+    <PromptInputActions>
+      <Button variant="primary" size="icon">Send</Button>
+    </PromptInputActions>
+    <PromptInputCharCount count={0} max={500} />
+  </PromptInputFooter>
+</PromptInput>
+```
+
+### With Attachments
+
+```tsx
+<PromptInput>
+  <PromptInputAttachments>
+    <PromptInputAttachment onRemove={() => {}}>file.pdf</PromptInputAttachment>
+  </PromptInputAttachments>
+  <PromptInputTextarea placeholder="Ask about the file..." />
+  <PromptInputFooter>
+    <PromptInputActions>
+      <Button variant="ghost" size="icon">Attach</Button>
+      <Button variant="primary" size="icon">Send</Button>
+    </PromptInputActions>
+  </PromptInputFooter>
+</PromptInput>
+```
+
+## API Reference
+
+### PromptInputTextarea
+
+<PropsTable props={[
+  { name: 'placeholder', type: 'string', description: 'Placeholder text.' },
+  { name: 'rows', type: 'number', default: '3', description: 'Number of visible rows.' },
+]} />
+
+### PromptInputCharCount
+
+<PropsTable props={[
+  { name: 'count', type: 'number', description: 'Current character count.' },
+  { name: 'max', type: 'number', description: 'Maximum character limit.' },
+]} />
+
+### PromptInputAttachment
+
+<PropsTable props={[
+  { name: 'onRemove', type: '() => void', description: 'Called when the remove button is clicked.' },
+  { name: 'children', type: 'ReactNode', description: 'Attachment label.' },
+]} />

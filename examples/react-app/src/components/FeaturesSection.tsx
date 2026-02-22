@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle, CardContent } from '@snx-ui/react'
+import { Card, CardHeader, CardTitle, CardContent } from '@snuxt-ui/react'
 import { SectionHeader } from './SectionHeader'
 import { useInView } from '../hooks/useInView'
 
@@ -151,7 +151,7 @@ export function FeaturesSection() {
     <section className="py-24 px-4">
       <div className="max-w-6xl mx-auto">
         <SectionHeader
-          title="Why snx-ui?"
+          title="Why snuxt-ui?"
           subtitle="Everything you need to build modern interfaces, nothing you don't."
         />
 

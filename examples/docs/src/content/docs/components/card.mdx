@@ -1,0 +1,203 @@
+---
+title: Card
+description: A container with header, content, and footer sections.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { CardDemo } from '../../../demos/CardDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A composable card component with header, title, description, content, and footer sub-components. Ideal for grouping related content and actions.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <CardDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import {
+      Card, CardHeader, CardTitle, CardDescription,
+      CardContent, CardFooter, Input, Button,
+    } from '@snuxt-ui/react'
+
+    export function CardDemo() {
+      return (
+        <Card className="w-full max-w-sm">
+          <CardHeader>
+            <CardTitle>Create project</CardTitle>
+            <CardDescription>Deploy your new project in one click.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Input placeholder="Project name" />
+          </CardContent>
+          <CardFooter className="flex justify-between">
+            <Button variant="outline">Cancel</Button>
+            <Button>Deploy</Button>
+          </CardFooter>
+        </Card>
+      )
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core';
+    import {
+      SnxCardComponent, SnxCardHeaderComponent,
+      SnxCardTitleComponent, SnxCardDescriptionComponent,
+      SnxCardContentComponent, SnxCardFooterComponent,
+    } from '@snuxt-ui/angular';
+    import { SnxInputComponent } from '@snuxt-ui/angular';
+    import { SnxButtonComponent } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-card-demo',
+      standalone: true,
+      imports: [
+        SnxCardComponent, SnxCardHeaderComponent,
+        SnxCardTitleComponent, SnxCardDescriptionComponent,
+        SnxCardContentComponent, SnxCardFooterComponent,
+        SnxInputComponent, SnxButtonComponent,
+      ],
+      template: `
+        <snx-card class="w-full max-w-sm">
+          <snx-card-header>
+            <snx-card-title>Create project</snx-card-title>
+            <snx-card-description>
+              Deploy your new project in one click.
+            </snx-card-description>
+          </snx-card-header>
+          <snx-card-content>
+            <snx-input placeholder="Project name" />
+          </snx-card-content>
+          <snx-card-footer class="flex justify-between">
+            <snx-button variant="outline">Cancel</snx-button>
+            <snx-button>Deploy</snx-button>
+          </snx-card-footer>
+        </snx-card>
+      `,
+    })
+    export class CardDemoComponent {}
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add card
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/card.css`
+    - `react/card.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/card.css`
+    - `angular/card.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  Card, CardHeader, CardTitle,
+  CardDescription, CardContent, CardFooter,
+} from '@snuxt-ui/react'
+```
+
+### Basic Card
+
+```tsx
+<Card>
+  <CardHeader>
+    <CardTitle>Notifications</CardTitle>
+    <CardDescription>You have 3 unread messages.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p>Check your inbox for the latest updates.</p>
+  </CardContent>
+</Card>
+```
+
+### Card with Form
+
+```tsx
+<Card className="w-full max-w-sm">
+  <CardHeader>
+    <CardTitle>Create project</CardTitle>
+    <CardDescription>Deploy your new project in one click.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <Input placeholder="Project name" />
+  </CardContent>
+  <CardFooter className="flex justify-between">
+    <Button variant="outline">Cancel</Button>
+    <Button>Deploy</Button>
+  </CardFooter>
+</Card>
+```
+
+### Card with Content Only
+
+```tsx
+<Card>
+  <CardContent>
+    <p>A simple content-only card without header or footer.</p>
+  </CardContent>
+</Card>
+```
+
+## API Reference
+
+### Card
+
+<PropsTable props={[
+  { name: 'className', type: 'string', description: 'Additional CSS classes on the card container.' },
+  { name: 'children', type: 'ReactNode', description: 'Card sub-components (CardHeader, CardContent, etc.).' },
+]} />
+
+### CardHeader
+
+<PropsTable props={[
+  { name: 'className', type: 'string', description: 'Additional CSS classes.' },
+  { name: 'children', type: 'ReactNode', description: 'Header content (CardTitle, CardDescription).' },
+]} />
+
+### CardTitle
+
+<PropsTable props={[
+  { name: 'className', type: 'string', description: 'Additional CSS classes.' },
+  { name: 'children', type: 'ReactNode', description: 'Title text.' },
+]} />
+
+### CardDescription
+
+<PropsTable props={[
+  { name: 'className', type: 'string', description: 'Additional CSS classes.' },
+  { name: 'children', type: 'ReactNode', description: 'Description text.' },
+]} />
+
+### CardContent
+
+<PropsTable props={[
+  { name: 'className', type: 'string', description: 'Additional CSS classes.' },
+  { name: 'children', type: 'ReactNode', description: 'Main card content.' },
+]} />
+
+### CardFooter
+
+<PropsTable props={[
+  { name: 'className', type: 'string', description: 'Additional CSS classes.' },
+  { name: 'children', type: 'ReactNode', description: 'Footer content (actions, buttons).' },
+]} />

@@ -1,0 +1,53 @@
+@layer components {
+  .snx-streaming-text-cursor::after {
+    content: '▍';
+    @apply ml-0.5 text-primary;
+    animation: snx-cursor-blink 1s step-end infinite;
+  }
+  .snx-streaming-text-fade-in {
+    animation: snx-stream-fade-in 0.3s ease both;
+  }
+  .snx-streaming-text-word {
+    animation: snx-stream-word 0.25s ease both;
+  }
+  .snx-streaming-text-line {
+    animation: snx-stream-line 0.4s ease both;
+  }
+  .snx-streaming-text-skeleton {
+    @apply space-y-2;
+  }
+  .snx-streaming-text-skeleton-line {
+    @apply h-4 rounded bg-muted;
+    background-size: 200% 100%;
+    background-image: linear-gradient(90deg, transparent 25%, oklch(0.5 0 0 / 0.08) 50%, transparent 75%);
+    animation: snx-skeleton-shimmer 1.5s ease-in-out infinite;
+  }
+  .snx-streaming-text-skeleton-line:last-child {
+    @apply w-3/5;
+  }
+}
+
+@keyframes snx-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes snx-stream-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes snx-stream-word {
+  from { opacity: 0; filter: blur(2px); }
+  to { opacity: 1; filter: blur(0); }
+}
+
+@keyframes snx-stream-line {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes snx-skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

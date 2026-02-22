@@ -1,0 +1,150 @@
+---
+title: Streaming Text
+description: Pure CSS typewriter cursor and fade-in animations for AI response streaming.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { StreamingTextDemo } from '../../../demos/StreamingTextDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+Pure CSS animations for streaming AI text responses. Includes a blinking cursor, word/line fade-in animations, and a shimmer skeleton loader.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <StreamingTextDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import {
+      StreamingText, StreamingTextLine,
+      StreamingTextSkeleton, StreamingTextSkeletonLine,
+    } from '@snuxt-ui/react'
+
+    export function StreamingTextDemo() {
+      return (
+        <div className="flex flex-col gap-6">
+          <StreamingText>
+            <StreamingTextLine>First line of response.</StreamingTextLine>
+            <StreamingTextLine style={{ animationDelay: '0.2s' }}>
+              Second line appears after.
+            </StreamingTextLine>
+          </StreamingText>
+
+          <StreamingTextSkeleton>
+            <StreamingTextSkeletonLine />
+            <StreamingTextSkeletonLine />
+            <StreamingTextSkeletonLine />
+          </StreamingTextSkeleton>
+        </div>
+      )
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core'
+    import {
+      SnxStreamingTextComponent, SnxStreamingTextLineComponent,
+      SnxStreamingTextSkeletonComponent, SnxStreamingTextSkeletonLineComponent,
+    } from '@snuxt-ui/angular'
+
+    @Component({
+      selector: 'app-streaming-demo',
+      standalone: true,
+      imports: [
+        SnxStreamingTextComponent, SnxStreamingTextLineComponent,
+        SnxStreamingTextSkeletonComponent, SnxStreamingTextSkeletonLineComponent,
+      ],
+      template: `
+        <snx-streaming-text>
+          <snx-streaming-text-line>First line of the response.</snx-streaming-text-line>
+          <snx-streaming-text-line>Second line appears after.</snx-streaming-text-line>
+        </snx-streaming-text>
+
+        <snx-streaming-text-skeleton>
+          <snx-streaming-text-skeleton-line />
+          <snx-streaming-text-skeleton-line />
+          <snx-streaming-text-skeleton-line />
+        </snx-streaming-text-skeleton>
+      `,
+    })
+    export class StreamingDemoComponent {}
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add streaming-text
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/streaming-text.css`
+    - `react/streaming-text.tsx`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/streaming-text.css`
+    - `angular/streaming-text.component.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import {
+  StreamingText, StreamingTextFadeIn, StreamingTextWord,
+  StreamingTextLine, StreamingTextSkeleton, StreamingTextSkeletonLine,
+} from '@snuxt-ui/react'
+```
+
+### Blinking Cursor
+
+```tsx
+<StreamingText>The response text appears here...</StreamingText>
+```
+
+### Fade-in Lines
+
+```tsx
+<StreamingText>
+  <StreamingTextLine>First line.</StreamingTextLine>
+  <StreamingTextLine style={{ animationDelay: '0.2s' }}>Second line.</StreamingTextLine>
+</StreamingText>
+```
+
+### Skeleton Loader
+
+```tsx
+<StreamingTextSkeleton>
+  <StreamingTextSkeletonLine />
+  <StreamingTextSkeletonLine />
+  <StreamingTextSkeletonLine />
+</StreamingTextSkeleton>
+```
+
+## API Reference
+
+### StreamingText
+
+Wrapper with a blinking cursor `::after` pseudo-element.
+
+### StreamingTextLine
+
+<PropsTable props={[
+  { name: 'style', type: 'CSSProperties', description: 'Use animationDelay to stagger line reveals.' },
+  { name: 'children', type: 'ReactNode', description: 'Line content.' },
+]} />
+
+### StreamingTextSkeletonLine
+
+Self-contained shimmer skeleton line. Last child is automatically 60% width.

@@ -1,0 +1,147 @@
+---
+title: Select
+description: A dropdown select with keyboard navigation and ARIA support.
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components'
+import { SelectDemo } from '../../../demos/SelectDemo'
+import ComponentPreview from '../../../components/ComponentPreview.astro'
+import PropsTable from '../../../components/PropsTable.astro'
+
+A custom select dropdown with keyboard navigation, ARIA attributes, and click-outside-to-close behavior.
+
+## Preview
+
+<Tabs>
+  <TabItem label="Preview">
+    <ComponentPreview>
+      <SelectDemo client:load />
+    </ComponentPreview>
+  </TabItem>
+  <TabItem label="React">
+    ```tsx
+    import { Select } from '@snuxt-ui/react'
+
+    const options = [
+      { value: 'react', label: 'React' },
+      { value: 'vue', label: 'Vue' },
+      { value: 'angular', label: 'Angular' },
+      { value: 'svelte', label: 'Svelte' },
+    ]
+
+    export function SelectDemo() {
+      return (
+        <div className="w-full max-w-sm">
+          <Select options={options} placeholder="Select a framework..." />
+        </div>
+      )
+    }
+    ```
+  </TabItem>
+  <TabItem label="Angular">
+    ```ts
+    import { Component } from '@angular/core';
+    import { SnxSelectComponent } from '@snuxt-ui/angular';
+
+    @Component({
+      selector: 'app-select-demo',
+      standalone: true,
+      imports: [SnxSelectComponent],
+      template: `
+        <div class="w-full max-w-sm">
+          <snx-select
+            [options]="options"
+            placeholder="Select a framework..."
+            (valueChange)="onValueChange($event)" />
+        </div>
+      `,
+    })
+    export class SelectDemoComponent {
+      options = [
+        { value: 'react', label: 'React' },
+        { value: 'vue', label: 'Vue' },
+        { value: 'angular', label: 'Angular' },
+        { value: 'svelte', label: 'Svelte' },
+      ];
+
+      onValueChange(value: string) {
+        console.log('Selected:', value);
+      }
+    }
+    ```
+  </TabItem>
+</Tabs>
+
+## Installation
+
+<Tabs>
+  <TabItem label="CLI">
+    ```bash
+    npx snuxt add select
+    ```
+  </TabItem>
+  <TabItem label="Manual (React)">
+    Copy these files into your project:
+    - `css/components/select.css`
+    - `react/select.tsx`
+    - `react/hooks/use-select.ts`
+    - `core/select.ts`
+  </TabItem>
+  <TabItem label="Manual (Angular)">
+    Copy these files into your project:
+    - `css/components/select.css`
+    - `core/select.ts`
+    - `angular/select.ts`
+  </TabItem>
+</Tabs>
+
+## Usage
+
+```tsx
+import { Select } from '@snuxt-ui/react'
+```
+
+### Default
+
+```tsx
+const options = [
+  { value: 'react', label: 'React' },
+  { value: 'vue', label: 'Vue' },
+  { value: 'angular', label: 'Angular' },
+]
+
+<Select options={options} placeholder="Select a framework..." />
+```
+
+### With onChange Handler
+
+```tsx
+const [selected, setSelected] = useState('')
+
+<Select
+  options={options}
+  placeholder="Pick one..."
+  onChange={(value) => setSelected(value)}
+/>
+```
+
+### With Disabled Options
+
+```tsx
+const options = [
+  { value: 'react', label: 'React' },
+  { value: 'vue', label: 'Vue', disabled: true },
+  { value: 'angular', label: 'Angular' },
+]
+
+<Select options={options} placeholder="Select a framework..." />
+```
+
+## API Reference
+
+<PropsTable props={[
+  { name: 'options', type: '{ value: string; label: string; disabled?: boolean }[]', description: 'List of selectable options.' },
+  { name: 'placeholder', type: 'string', default: '"Select..."', description: 'Placeholder text when nothing is selected.' },
+  { name: 'onChange', type: '(value: string) => void', description: 'Called when the selection changes.' },
+  { name: 'className', type: 'string', description: 'Additional CSS class names.' },
+]} />
