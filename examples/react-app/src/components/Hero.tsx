@@ -20,7 +20,7 @@ export function Hero() {
       <div className="relative z-10 text-center max-w-3xl">
         {/* Badge */}
         <div className="animate-fade-in-up">
-          <Badge variant="outline">v0.1.0 — 24 components</Badge>
+          <Badge variant="outline">v0.1.0 — 31 components</Badge>
         </div>
 
         {/* Heading */}
@@ -32,7 +32,7 @@ export function Hero() {
 
         {/* Subtitle */}
         <p className="text-lg text-muted-foreground mt-6 max-w-xl mx-auto animate-fade-in-up delay-300">
-          24 professionally crafted components. CSS-first. Tailwind v4. One CLI
+          31 professionally crafted components. CSS-first. Tailwind v4. One CLI
           command. React + Angular.
         </p>
 

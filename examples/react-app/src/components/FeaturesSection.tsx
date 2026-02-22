@@ -115,9 +115,9 @@ const features = [
         <rect width="7" height="7" x="3" y="14" rx="1" />
       </svg>
     ),
-    title: '24 Components',
+    title: '31 Components',
     description:
-      'Form, Display, Overlay, Navigation, and Feedback categories.',
+      'Form, Display, Overlay, Navigation, Feedback, and AI categories.',
     hue: 210,
   },
   {
