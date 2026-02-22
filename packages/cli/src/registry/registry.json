@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "baseUrl": "https://raw.githubusercontent.com/thepsygeek/snx-ui/main/packages",
+    "sharedCoreDeps": ["core/src/utils/cn.ts"]
+  },
   "components": {
     "button": {
       "name": "button",
@@ -89,6 +93,7 @@
         "react": ["react/src/dialog.tsx", "react/src/hooks/use-dialog.ts"],
         "angular": "angular/src/dialog.component.ts"
       },
+      "coreDeps": ["core/src/utils/dom.ts"],
       "dependencies": { "internal": ["button"], "npm": {} }
     },
     "tabs": {
@@ -100,6 +105,7 @@
         "react": ["react/src/tabs.tsx", "react/src/hooks/use-tabs.ts"],
         "angular": "angular/src/tabs.component.ts"
       },
+      "coreDeps": ["core/src/utils/keyboard.ts"],
       "dependencies": { "internal": [], "npm": {} }
     },
     "accordion": {
@@ -111,6 +117,7 @@
         "react": ["react/src/accordion.tsx", "react/src/hooks/use-accordion.ts"],
         "angular": "angular/src/accordion.component.ts"
       },
+      "coreDeps": ["core/src/utils/keyboard.ts"],
       "dependencies": { "internal": [], "npm": {} }
     },
     "select": {
@@ -122,6 +129,7 @@
         "react": ["react/src/select.tsx", "react/src/hooks/use-select.ts"],
         "angular": "angular/src/select.component.ts"
       },
+      "coreDeps": ["core/src/utils/dom.ts", "core/src/utils/keyboard.ts"],
       "dependencies": { "internal": [], "npm": {} }
     },
     "tooltip": {
@@ -133,6 +141,7 @@
         "react": ["react/src/tooltip.tsx", "react/src/hooks/use-tooltip.ts"],
         "angular": "angular/src/tooltip.directive.ts"
       },
+      "coreDeps": [],
       "dependencies": { "internal": [], "npm": {} }
     },
     "popover": {
@@ -144,6 +153,7 @@
         "react": ["react/src/popover.tsx", "react/src/hooks/use-popover.ts"],
         "angular": "angular/src/popover.component.ts"
       },
+      "coreDeps": ["core/src/utils/dom.ts"],
       "dependencies": { "internal": [], "npm": {} }
     },
     "toast": {
@@ -155,6 +165,7 @@
         "react": ["react/src/toast.tsx", "react/src/hooks/use-toast.ts"],
         "angular": "angular/src/toast.component.ts"
       },
+      "coreDeps": [],
       "dependencies": { "internal": [], "npm": {} }
     },
     "drawer": {
@@ -166,6 +177,7 @@
         "react": ["react/src/drawer.tsx", "react/src/hooks/use-drawer.ts"],
         "angular": "angular/src/drawer.component.ts"
       },
+      "coreDeps": ["core/src/utils/dom.ts"],
       "dependencies": { "internal": [], "npm": {} }
     },
     "dropdown-menu": {
@@ -177,6 +189,7 @@
         "react": ["react/src/dropdown-menu.tsx", "react/src/hooks/use-dropdown-menu.ts"],
         "angular": "angular/src/dropdown-menu.component.ts"
       },
+      "coreDeps": ["core/src/utils/dom.ts", "core/src/utils/keyboard.ts"],
       "dependencies": { "internal": [], "npm": {} }
     },
     "switch": {
@@ -188,6 +201,7 @@
         "react": "react/src/switch.tsx",
         "angular": "angular/src/switch.component.ts"
       },
+      "coreDeps": [],
       "dependencies": { "internal": [], "npm": {} }
     },
     "progress": {
@@ -247,6 +261,76 @@
         "css": "css/components/alert.css",
         "react": "react/src/alert.tsx",
         "angular": "angular/src/alert.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "prompt-input": {
+      "name": "prompt-input",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/prompt-input.css",
+        "react": "react/src/prompt-input.tsx",
+        "angular": "angular/src/prompt-input.component.ts"
+      },
+      "dependencies": { "internal": ["button"], "npm": {} }
+    },
+    "chat-bubble": {
+      "name": "chat-bubble",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/chat-bubble.css",
+        "react": "react/src/chat-bubble.tsx",
+        "angular": "angular/src/chat-bubble.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "ai-badge": {
+      "name": "ai-badge",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/ai-badge.css",
+        "react": "react/src/ai-badge.tsx",
+        "angular": "angular/src/ai-badge.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "suggestion-chips": {
+      "name": "suggestion-chips",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/suggestion-chips.css",
+        "react": "react/src/suggestion-chips.tsx",
+        "angular": "angular/src/suggestion-chips.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "source-card": {
+      "name": "source-card",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/source-card.css",
+        "react": "react/src/source-card.tsx",
+        "angular": "angular/src/source-card.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "streaming-text": {
+      "name": "streaming-text",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/streaming-text.css",
+        "react": "react/src/streaming-text.tsx",
+        "angular": "angular/src/streaming-text.component.ts"
+      },
+      "dependencies": { "internal": [], "npm": {} }
+    },
+    "feedback": {
+      "name": "feedback",
+      "type": "css-only",
+      "files": {
+        "css": "css/components/feedback.css",
+        "react": "react/src/feedback.tsx",
+        "angular": "angular/src/feedback.component.ts"
       },
       "dependencies": { "internal": [], "npm": {} }
     }

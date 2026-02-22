@@ -28,12 +28,14 @@ export function Select({ options, placeholder = 'Select...', className, onChange
   }, [select.selectedValue])
 
   return (
-    <div ref={containerRef} className={cn('relative', className)} onKeyDown={select.handleKeyDown}>
+    <div ref={containerRef} className={cn('relative', className)}>
       <button
         className="snx-select-trigger"
         aria-expanded={select.isOpen}
         aria-haspopup="listbox"
+        aria-activedescendant={select.isOpen && select.highlightedIndex >= 0 ? `select-option-${options[select.highlightedIndex]?.value}` : undefined}
         onClick={() => select.setIsOpen(!select.isOpen)}
+        onKeyDown={select.handleKeyDown}
         type="button"
       >
         <span className={cn(!selectedLabel && 'text-muted-foreground')}>

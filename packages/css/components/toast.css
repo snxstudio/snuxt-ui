@@ -33,7 +33,7 @@
   }
   .snx-toast-close {
     @apply absolute right-1 top-1 rounded-md p-1 text-foreground/50 opacity-0 transition-opacity
-           hover:text-foreground group-hover:opacity-100 focus:opacity-100 focus:outline-none;
+           hover:text-foreground focus-visible:opacity-100 focus-visible:outline-none;
   }
   .snx-toast:hover .snx-toast-close {
     @apply opacity-100;
@@ -41,6 +41,6 @@
   .snx-toast-action {
     @apply inline-flex h-8 shrink-0 items-center justify-center rounded-md border bg-transparent
            px-3 text-sm font-medium transition-colors hover:bg-secondary
-           focus:outline-none focus:ring-1 focus:ring-ring disabled:pointer-events-none disabled:opacity-50;
+           focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50;
   }
 }

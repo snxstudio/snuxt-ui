@@ -3,10 +3,14 @@ export interface DialogConfig {
   onOpenChange?: (open: boolean) => void
 }
 
+let dialogCounter = 0
+
 export function createDialog(config: DialogConfig = {}) {
   const { modal = true, onOpenChange } = config
+  const id = `snx-dialog-${++dialogCounter}`
 
   return {
+    id,
     getTriggerProps: (isOpen: boolean) => ({
       'aria-haspopup': 'dialog' as const,
       'aria-expanded': isOpen,
@@ -15,7 +19,9 @@ export function createDialog(config: DialogConfig = {}) {
     getContentProps: (isOpen: boolean) => ({
       role: 'dialog' as const,
       'aria-modal': modal,
-      hidden: !isOpen || undefined,
+      'aria-labelledby': `${id}-title`,
+      'aria-describedby': `${id}-description`,
+      hidden: !isOpen ? true : undefined,
       onKeyDown: (e: KeyboardEvent) => {
         if (e.key === 'Escape') onOpenChange?.(false)
       },

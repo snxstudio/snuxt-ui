@@ -23,6 +23,7 @@
   --color-card-foreground: oklch(0.145 0 0);
   --color-popover: oklch(1 0 0);
   --color-popover-foreground: oklch(0.145 0 0);
+  --color-overlay: oklch(0 0 0 / 0.8);
 
   /* Radius scale */
   --radius-sm: 0.25rem;
@@ -82,5 +83,6 @@
     --color-card-foreground: oklch(0.985 0 0);
     --color-popover: oklch(0.205 0.015 286);
     --color-popover-foreground: oklch(0.985 0 0);
+    --color-overlay: oklch(0 0 0 / 0.8);
   }
 }

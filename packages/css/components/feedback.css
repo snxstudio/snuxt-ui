@@ -1,0 +1,33 @@
+@layer components {
+  .snx-feedback {
+    @apply inline-flex items-center gap-0.5;
+  }
+  .snx-feedback-btn {
+    @apply inline-flex items-center justify-center h-8 w-8 rounded-md transition-colors
+           hover:bg-accent cursor-pointer border-0 bg-transparent text-muted-foreground
+           [&_svg]:size-4 [&_svg]:shrink-0;
+  }
+  .snx-feedback-btn-selected {
+    @apply ring-1 ring-ring;
+  }
+  .snx-feedback-btn-up.snx-feedback-btn-selected {
+    @apply text-emerald-500 bg-emerald-500/10 hover:bg-emerald-500/15;
+  }
+  .snx-feedback-btn-down.snx-feedback-btn-selected {
+    @apply text-destructive bg-destructive/10 hover:bg-destructive/15;
+  }
+  .snx-feedback-separator {
+    @apply inline-block w-px h-4 bg-border mx-1;
+  }
+  .snx-feedback-form {
+    @apply flex gap-2 items-center mt-2;
+  }
+  .snx-feedback-input {
+    @apply flex-1 rounded-md border border-input bg-background px-3 py-1.5 text-sm
+           placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring;
+  }
+  .snx-feedback-submit {
+    @apply rounded-md bg-primary text-primary-foreground px-3 py-1.5 text-sm font-medium
+           cursor-pointer hover:bg-primary/90 transition-colors;
+  }
+}

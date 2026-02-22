@@ -3,8 +3,11 @@ export interface TooltipConfig {
   onOpenChange?: (open: boolean) => void
 }
 
+let tooltipCounter = 0
+
 export function createTooltip(config: TooltipConfig = {}) {
   const { delay = 700, onOpenChange } = config
+  const id = `snx-tooltip-${++tooltipCounter}`
   let timeoutId: ReturnType<typeof setTimeout> | null = null
 
   function clearDelay() {
@@ -28,14 +31,16 @@ export function createTooltip(config: TooltipConfig = {}) {
 
   return {
     getTriggerProps: () => ({
+      'aria-describedby': id,
       onMouseEnter: () => openWithDelay(),
       onMouseLeave: () => close(),
       onFocus: () => openWithDelay(),
       onBlur: () => close(),
     }),
     getContentProps: (isOpen: boolean) => ({
+      id,
       role: 'tooltip' as const,
-      hidden: !isOpen || undefined,
+      hidden: !isOpen ? true : undefined,
     }),
     destroy: () => clearDelay(),
   }

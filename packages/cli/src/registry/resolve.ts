@@ -9,13 +9,20 @@ export interface ComponentEntry {
     react?: string | string[]
     angular?: string | string[]
   }
+  coreDeps?: string[]
   dependencies: {
     internal: string[]
     npm: Record<string, string[]>
   }
 }
 
+export interface RegistryMeta {
+  baseUrl: string
+  sharedCoreDeps: string[]
+}
+
 export interface Registry {
+  meta: RegistryMeta
   components: Record<string, ComponentEntry>
 }
 
@@ -33,6 +40,21 @@ export function resolveComponentDeps(name: string, resolved = new Set<string>())
   }
 
   return Array.from(resolved)
+}
+
+export function resolveCoreDeps(name: string): string[] {
+  const component = registry.components[name]
+  if (!component) return []
+
+  const deps = new Set<string>(registry.meta.sharedCoreDeps)
+
+  if (component.coreDeps) {
+    for (const dep of component.coreDeps) {
+      deps.add(dep)
+    }
+  }
+
+  return Array.from(deps)
 }
 
 export function getComponent(name: string): ComponentEntry | undefined {

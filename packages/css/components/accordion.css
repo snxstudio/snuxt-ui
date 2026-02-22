@@ -4,7 +4,7 @@
   }
   .snx-accordion-trigger {
     @apply flex w-full flex-1 items-center justify-between py-4 text-sm font-medium
-           text-left transition-all cursor-pointer hover:underline;
+           text-left transition-all cursor-pointer hover:underline active:bg-muted/50;
   }
   .snx-accordion-trigger[aria-expanded='true'] .snx-accordion-chevron {
     @apply rotate-180;

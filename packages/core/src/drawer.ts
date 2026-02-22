@@ -14,7 +14,7 @@ export function createDrawer(config: DrawerConfig = {}) {
     getContentProps: (isOpen: boolean) => ({
       role: 'dialog' as const,
       'aria-modal': true,
-      hidden: !isOpen || undefined,
+      hidden: !isOpen ? true : undefined,
       onKeyDown: (e: KeyboardEvent) => {
         if (e.key === 'Escape') onOpenChange?.(false)
       },

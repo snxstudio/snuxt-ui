@@ -16,13 +16,16 @@ export function Tooltip({ content, delay, children, className, side = 'top' }: T
     ? 'bottom-full left-1/2 -translate-x-1/2 mb-2'
     : 'top-full left-1/2 -translate-x-1/2 mt-2'
 
+  const triggerProps = tooltip.getTriggerProps()
+  const contentProps = tooltip.getContentProps(tooltip.open)
+
   return (
-    <div className="relative inline-flex" {...tooltip.getTriggerProps()}>
+    <div className="relative inline-flex" {...triggerProps}>
       {children}
       {tooltip.open && (
         <div
+          {...contentProps}
           className={cn('snx-tooltip-content absolute', positionClasses, className)}
-          role="tooltip"
         >
           {content}
         </div>

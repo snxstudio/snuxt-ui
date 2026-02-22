@@ -15,13 +15,15 @@ export function createSelect(options: SelectOption[], config: SelectConfig = {})
   const { onValueChange, onOpenChange } = config
 
   return {
-    getTriggerProps: (isOpen: boolean, selectedValue: string | null) => {
+    getTriggerProps: (isOpen: boolean, selectedValue: string | null, highlightedIndex?: number) => {
       const selectedOption = options.find(o => o.value === selectedValue)
+      const highlightedOption = highlightedIndex != null ? options[highlightedIndex] : undefined
       return {
         role: 'combobox' as const,
         'aria-expanded': isOpen,
         'aria-haspopup': 'listbox' as const,
         'aria-label': selectedOption?.label || 'Select an option',
+        'aria-activedescendant': isOpen && highlightedOption ? `select-option-${highlightedOption.value}` : undefined,
         onClick: () => onOpenChange?.(!isOpen),
         onKeyDown: (e: KeyboardEvent) => {
           if (e.key === Keys.Enter || e.key === Keys.Space) {
@@ -56,7 +58,7 @@ export function createSelect(options: SelectOption[], config: SelectConfig = {})
       },
     }),
     getContentProps: (isOpen: boolean) => ({
-      hidden: !isOpen || undefined,
+      hidden: !isOpen ? true : undefined,
     }),
     handleKeyDown: (
       e: KeyboardEvent,

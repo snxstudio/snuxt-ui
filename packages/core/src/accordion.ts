@@ -84,7 +84,7 @@ export function createAccordion(items: AccordionItemConfig[], config: AccordionC
         role: 'region' as const,
         id: `accordion-content-${value}`,
         'aria-labelledby': `accordion-trigger-${value}`,
-        hidden: !isExpanded || undefined,
+        hidden: !isExpanded ? true : undefined,
       }
     },
   }
